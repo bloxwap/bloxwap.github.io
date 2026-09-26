@@ -1,0 +1,7 @@
+{
+  "name": "bloxwap.github.io",
+  "private": true,
+  "scripts": {
+    "dev": "bun run server.ts"
+  }
+}
