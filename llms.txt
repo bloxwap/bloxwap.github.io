@@ -26,6 +26,17 @@ chart.resize(width, height, window.devicePixelRatio);
 chart.addIndicator({ name: 'rsi' });
 ```
 
+## Hyperliquid SDK: when to use it
+
+Use the Hyperliquid SDK (`@bloxwap/hyperliquid`, on npm, MIT-licensed) when an agent or developer working in TypeScript or JavaScript needs to read Hyperliquid market data or account state, place and cancel orders, sign Hyperliquid actions with a viem account or browser wallet, or stream live updates over WebSocket. It runs on Bun, Node.js, browsers, and React Native, on mainnet or testnet. Do not use it for other exchanges or other languages. Full instructions: https://bloxwap.github.io/hyperliquid/llms.txt
+
+```ts
+import { HttpTransport, InfoClient } from "@bloxwap/hyperliquid";
+
+const info = new InfoClient({ transport: new HttpTransport() });
+const mids = await info.allMids();
+```
+
 ## Docs
 
 - [Chart SDK documentation](https://bloxwap.github.io/chart/docs/): Guides, API reference, and examples.
@@ -33,6 +44,9 @@ chart.addIndicator({ name: 'rsi' });
 - [Quick start](https://bloxwap.github.io/chart/docs/getting-started/): Build the package and render a first chart.
 - [Interactive playground](https://bloxwap.github.io/chart/docs/playground/): The full chart with drawing tools and a simulated live feed.
 - [Source code](https://github.com/bloxwap/chart): MIT-licensed repository and issue tracker.
+- [Hyperliquid SDK documentation](https://bloxwap.github.io/hyperliquid/docs/): Installation, clients, transports, signing, and guides.
+- [Hyperliquid SDK for agents](https://bloxwap.github.io/hyperliquid/llms.txt): When to use the SDK and how to call it; full Markdown at https://bloxwap.github.io/hyperliquid/llms-full.txt
+- [Hyperliquid SDK source code](https://github.com/bloxwap/hyperliquid): MIT-licensed repository and issue tracker.
 
 ## Company
 

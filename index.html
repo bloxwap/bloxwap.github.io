@@ -61,6 +61,23 @@
         "isAccessibleForFree": true,
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "publisher": { "@id": "https://bloxwap.github.io/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://bloxwap.github.io/hyperliquid/#software",
+        "name": "@bloxwap/hyperliquid",
+        "alternateName": "Bloxwap Hyperliquid SDK",
+        "description": "A fast, typed Hyperliquid SDK for TypeScript and JavaScript. Connect, trade, and subscribe with Bloxwap.",
+        "url": "https://bloxwap.github.io/hyperliquid/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Node.js, Bun, Web browser, React Native",
+        "softwareVersion": "0.5.0",
+        "license": "https://opensource.org/licenses/MIT",
+        "codeRepository": "https://github.com/bloxwap/hyperliquid",
+        "downloadUrl": "https://www.npmjs.com/package/@bloxwap/hyperliquid",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": { "@id": "https://bloxwap.github.io/#organization" }
       }
     ]
   }
@@ -69,7 +86,7 @@
 <body>
   <header class="nav">
     <a class="brand" href="/"><img src="/icon.svg" alt="" width="28" height="28" /> Bloxwap</a>
-    <nav class="nav-links" aria-label="Site"><a href="/chart/">Chart SDK</a><a href="/developers/">Developers</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+    <nav class="nav-links" aria-label="Site"><a href="/chart/">Chart SDK</a><a href="/hyperliquid/">Hyperliquid SDK</a><a href="/developers/">Developers</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
   </header>
   <main>
     <p class="eyebrow">Open source from Bloxwap, Inc.</p>
@@ -87,8 +104,16 @@
       <a class="card" href="https://github.com/bloxwap/chart"><h3>Source code</h3><p>The MIT-licensed repository and issue tracker on GitHub.</p></a>
     </div>
 
+    <h2>Hyperliquid SDK</h2>
+    <p>The Hyperliquid SDK, <code>@bloxwap/hyperliquid</code>, is a fast, fully typed TypeScript client for the Hyperliquid exchange API, published on npm under the MIT license. It reads market data and account state, places and cancels orders, signs actions with viem accounts or browser wallets, and streams live updates over WebSocket with automatic reconnection. It runs on Bun, Node.js, browsers, and React Native.</p>
+    <div class="cards">
+      <a class="card" href="/hyperliquid/docs/"><h3>Get started</h3><p>Install the package and read your first market data.</p></a>
+      <a class="card" href="/hyperliquid/docs/guides/"><h3>Guides</h3><p>Market orders, agent wallets, vaults, browser wallets, and tree-shaking.</p></a>
+      <a class="card" href="https://github.com/bloxwap/hyperliquid"><h3>Source code</h3><p>The MIT-licensed repository and issue tracker on GitHub.</p></a>
+    </div>
+
     <h2>For AI agents</h2>
-    <p>Machine-readable summaries of when and how to use these projects are available at <a href="/llms.txt">/llms.txt</a> and <a href="/chart/llms.txt">/chart/llms.txt</a>.</p>
+    <p>Machine-readable summaries of when and how to use these projects are available at <a href="/llms.txt">/llms.txt</a>, <a href="/chart/llms.txt">/chart/llms.txt</a>, and <a href="/hyperliquid/llms.txt">/hyperliquid/llms.txt</a>.</p>
   </main>
   <footer>
     <span>© Bloxwap, Inc.</span>
