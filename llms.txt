@@ -1,0 +1,41 @@
+# Bloxwap on GitHub
+
+> Open-source developer tools from Bloxwap, Inc. The main project is the Bloxwap Chart SDK (`@bloxwap/chart`), an MIT-licensed, zero-dependency TypeScript library for interactive financial charts on HTML canvas.
+
+Bloxwap, Inc. builds trading products: the Bloxwap app (bloxwap.com) for trading crypto, stocks, gold, and indices, and the Bloxwap Pro terminal (bloxwap.pro). This site, bloxwap.github.io, documents the open-source tools behind them.
+
+## When to use this
+
+Use the Bloxwap Chart SDK when an agent or developer needs to:
+
+- Add an interactive candlestick, OHLC, line, area, or histogram price chart to a web application or trading interface.
+- Give users technical-analysis drawing tools (trend lines, Fibonacci, pitchforks, Gann, harmonic patterns, Elliott waves, long/short positions, measurers, annotations): 89 are built in.
+- Add built-in indicators (SMA, EMA, Bollinger Bands, MACD, RSI, KDJ, volume) or register custom ones.
+- Stream live candle updates into a chart.
+- Chart without runtime dependencies, and without the library touching global `document` or `window` (it draws into a canvas you pass in; it also runs in workers, SSR, and tests).
+
+Do not use it for general business charts (pie, scatter, stacked bars) or when you need an npm install today: the package is not yet published on npm and is built from source. Full instructions: https://bloxwap.github.io/chart/llms.txt
+
+## How to call it
+
+```ts
+import { createChart } from '@bloxwap/chart';
+
+const chart = createChart({ container: canvas, config: { data: candles, series: { type: 'candlestick' } } });
+chart.resize(width, height, window.devicePixelRatio);
+chart.addIndicator({ name: 'rsi' });
+```
+
+## Docs
+
+- [Chart SDK documentation](https://bloxwap.github.io/chart/docs/): Guides, API reference, and examples.
+- [Chart SDK for agents](https://bloxwap.github.io/chart/llms.txt): When to use the library and how to install and call it.
+- [Quick start](https://bloxwap.github.io/chart/docs/getting-started/): Build the package and render a first chart.
+- [Interactive playground](https://bloxwap.github.io/chart/docs/playground/): The full chart with drawing tools and a simulated live feed.
+- [Source code](https://github.com/bloxwap/chart): MIT-licensed repository and issue tracker.
+
+## Company
+
+- [About](https://bloxwap.github.io/about/): Bloxwap, Inc. and what it builds.
+- [Contact](https://bloxwap.github.io/contact/): support@bloxwap.com, GitHub issues, X, and Discord.
+- [Privacy](https://bloxwap.github.io/privacy/): No cookies or analytics on this site.

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bloxwap on GitHub — open-source trading tools</title>
+  <meta name="description" content="Open-source developer tools from Bloxwap, Inc., including the Bloxwap Chart SDK (@bloxwap/chart): a zero-dependency TypeScript library for interactive financial charts." />
+  <link rel="canonical" href="https://bloxwap.github.io/" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Bloxwap on GitHub" />
+  <meta property="og:title" content="Bloxwap on GitHub — open-source trading tools" />
+  <meta property="og:description" content="Open-source developer tools from Bloxwap, Inc., including the Bloxwap Chart SDK for interactive financial charts." />
+  <meta property="og:url" content="https://bloxwap.github.io/" />
+  <meta property="og:image" content="https://bloxwap.github.io/chart/og/home.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@bloxwap" />
+  <meta name="twitter:image" content="https://bloxwap.github.io/chart/og/home.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://bloxwap.github.io/#organization",
+        "name": "Bloxwap, Inc.",
+        "alternateName": "Bloxwap",
+        "url": "https://bloxwap.com",
+        "logo": "https://bloxwap.github.io/icon.svg",
+        "email": "support@bloxwap.com",
+        "description": "Bloxwap, Inc. builds trading products: the Bloxwap app for trading crypto, stocks, gold, and indices, the Bloxwap Pro terminal, and open-source developer tools.",
+        "sameAs": ["https://x.com/bloxwap", "https://github.com/bloxwap", "https://discord.com/invite/cEfkcg6JHT", "https://bloxwap.com", "https://bloxwap.pro"],
+        "contactPoint": [{ "@type": "ContactPoint", "contactType": "customer support", "email": "support@bloxwap.com", "url": "https://bloxwap.github.io/contact/", "availableLanguage": "English" }]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://bloxwap.github.io/#website",
+        "name": "Bloxwap on GitHub",
+        "url": "https://bloxwap.github.io/",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://bloxwap.github.io/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://bloxwap.github.io/chart/#software",
+        "name": "@bloxwap/chart",
+        "alternateName": "Bloxwap Chart SDK",
+        "description": "A zero-dependency TypeScript library for interactive financial charts on HTML canvas, with WebAssembly-accelerated math, built-in indicators, and 89 drawing tools.",
+        "url": "https://bloxwap.github.io/chart/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web browser, Node.js",
+        "softwareVersion": "0.1.0",
+        "license": "https://opensource.org/licenses/MIT",
+        "codeRepository": "https://github.com/bloxwap/chart",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": { "@id": "https://bloxwap.github.io/#organization" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="/"><img src="/icon.svg" alt="" width="28" height="28" /> Bloxwap</a>
+    <nav class="nav-links" aria-label="Site"><a href="/chart/">Chart SDK</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+  </header>
+  <main>
+    <p class="eyebrow">Open source from Bloxwap, Inc.</p>
+    <h1>Bloxwap on GitHub</h1>
+    <p class="lede">This is the home of Bloxwap's open-source developer tools. The main project here is the Bloxwap Chart SDK, <code>@bloxwap/chart</code>: a TypeScript library for building interactive financial charts in your own product.</p>
+    <p>Bloxwap, Inc. builds trading products, including the Bloxwap app for trading crypto, stocks, gold, and indices, and the Bloxwap Pro terminal. The charting technology behind those experiences is published here under the MIT license, with documentation, runnable examples, and an interactive playground.</p>
+    <a class="cta" href="/chart/">Open the Chart SDK docs →</a>
+
+    <h2>Bloxwap Chart SDK</h2>
+    <p>The Chart SDK draws candlestick, OHLC bar, line, area, and histogram series onto an HTML canvas you provide. It has no runtime dependencies, accelerates its hot math paths with WebAssembly (falling back to plain JavaScript), and never touches the global <code>document</code> or <code>window</code>, so it runs in browsers, workers, server rendering, and tests.</p>
+    <p>It ships built-in indicators (SMA, EMA, Bollinger Bands, MACD, RSI, KDJ, and volume) and 89 drawing tools grouped the way trading terminals present them: trend lines, channels, pitchforks, Fibonacci and Gann tools, harmonic patterns, Elliott waves, long and short positions, measurers, shapes, and annotations. An optional UI layer adds a drawing toolbar, a settings card, and on-chart editing.</p>
+    <div class="cards">
+      <a class="card" href="/chart/docs/getting-started/"><h3>Quick start</h3><p>Build the package and render your first candlestick chart.</p></a>
+      <a class="card" href="/chart/docs/playground/"><h3>Playground</h3><p>Try the full chart with drawing tools and a simulated live feed.</p></a>
+      <a class="card" href="https://github.com/bloxwap/chart"><h3>Source code</h3><p>The MIT-licensed repository and issue tracker on GitHub.</p></a>
+    </div>
+
+    <h2>For AI agents</h2>
+    <p>Machine-readable summaries of when and how to use these projects are available at <a href="/llms.txt">/llms.txt</a> and <a href="/chart/llms.txt">/chart/llms.txt</a>.</p>
+  </main>
+  <footer>
+    <span>© Bloxwap, Inc.</span>
+    <nav aria-label="Company"><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="https://github.com/bloxwap">GitHub</a><a href="https://x.com/bloxwap">X</a></nav>
+  </footer>
+</body>
+</html>
