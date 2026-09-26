@@ -51,5 +51,4 @@ const mids = await info.allMids();
 ## Company
 
 - [About](https://bloxwap.github.io/about/): Bloxwap, Inc. and what it builds.
-- [Contact](https://bloxwap.github.io/contact/): support@bloxwap.com, GitHub issues, X, and Discord.
 - [Privacy](https://bloxwap.github.io/privacy/): No cookies or analytics on this site.
