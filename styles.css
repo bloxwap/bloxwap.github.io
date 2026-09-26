@@ -39,7 +39,7 @@ strong { color: var(--text); }
 .cta:hover { color: var(--black); opacity: 0.9; }
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 16px; }
 .card { display: block; padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); text-decoration: none; }
-.card h3 { margin: 0 0 6px; color: var(--text); }
+.card h2, .card h3 { margin: 0 0 6px; color: var(--text); }
 .card p { margin: 0; font-size: 14px; }
 .card:hover { border-color: var(--green); }
 code { font: 14px ui-monospace, 'SF Mono', Menlo, monospace; color: var(--text); }
