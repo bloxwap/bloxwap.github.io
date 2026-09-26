@@ -24,8 +24,7 @@ a:hover { color: var(--green); }
 .nav { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; max-width: 1400px; margin: 0 auto; padding: 16px; }
 .nav::after { content: ""; position: absolute; bottom: 0; left: calc(50% - 50vw); width: 100vw; border-bottom: 1px solid var(--border); }
 .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-weight: 700; }
-.brand img { width: 28px; height: 28px; }
-.brand img.wordmark { width: auto; height: 24px; }
+.brand img { width: auto; height: 28px; }
 .nav-links { display: flex; gap: 20px; font-size: 14px; }
 .nav-links a { color: var(--muted); text-decoration: none; }
 .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text); }
@@ -49,8 +48,7 @@ footer { width: 100%; max-width: 1400px; margin: 0 auto; padding: 48px 16px 24px
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; }
 @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 .footer-brand p { margin: 12px 0 0; }
-.footer-brand .brand img { width: 40px; height: 40px; }
-.footer-brand .brand img.wordmark { width: auto; height: 40px; }
+.footer-brand .brand img { width: auto; height: 44px; }
 .footer-col { display: flex; flex-direction: column; gap: 10px; }
 .footer-col h4 { margin: 0 0 4px; color: var(--muted); font: 12px/1.4 ui-monospace, 'SF Mono', Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; }
 .footer-col a { color: var(--text); text-decoration: none; }
