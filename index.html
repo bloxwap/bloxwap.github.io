@@ -61,6 +61,23 @@
         "isAccessibleForFree": true,
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "publisher": { "@id": "https://bloxwap.github.io/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://bloxwap.github.io/hyperliquid/#software",
+        "name": "@bloxwap/hyperliquid",
+        "alternateName": "Bloxwap Hyperliquid SDK",
+        "description": "A fast, typed Hyperliquid SDK for TypeScript and JavaScript. Connect, trade, and subscribe with Bloxwap.",
+        "url": "https://bloxwap.github.io/hyperliquid/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Node.js, Bun, Web browser, React Native",
+        "softwareVersion": "0.5.0",
+        "license": "https://opensource.org/licenses/MIT",
+        "codeRepository": "https://github.com/bloxwap/hyperliquid",
+        "downloadUrl": "https://www.npmjs.com/package/@bloxwap/hyperliquid",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": { "@id": "https://bloxwap.github.io/#organization" }
       }
     ]
   }
@@ -69,26 +86,16 @@
 <body>
   <header class="nav">
     <a class="brand" href="/"><img src="/icon.svg" alt="" width="28" height="28" /> Bloxwap</a>
-    <nav class="nav-links" aria-label="Site"><a href="/chart/">Chart SDK</a><a href="/developers/">Developers</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+    <nav class="nav-links" aria-label="Site"><a href="/chart/">Chart SDK</a><a href="/hyperliquid/">Hyperliquid SDK</a><a href="/developers/">Developers</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
   </header>
   <main>
     <p class="eyebrow">Open source from Bloxwap, Inc.</p>
     <h1>Bloxwap on GitHub</h1>
-    <p class="lede">This is the home of Bloxwap's open-source developer tools. The main project here is the Bloxwap Chart SDK, <code>@bloxwap/chart</code>: a TypeScript library for building interactive financial charts in your own product.</p>
-    <p>Bloxwap, Inc. builds trading products, including the Bloxwap app for trading crypto, stocks, gold, and indices, and the Bloxwap Pro terminal. The charting technology behind those experiences is published here under the MIT license, with documentation, runnable examples, and an interactive playground.</p>
-    <a class="cta" href="/chart/">Open the Chart SDK docs →</a>
-
-    <h2>Bloxwap Chart SDK</h2>
-    <p>The Chart SDK draws candlestick, OHLC bar, line, area, and histogram series onto an HTML canvas you provide. It has no runtime dependencies, accelerates its hot math paths with WebAssembly (falling back to plain JavaScript), and never touches the global <code>document</code> or <code>window</code>, so it runs in browsers, workers, server rendering, and tests.</p>
-    <p>It ships built-in indicators (SMA, EMA, Bollinger Bands, MACD, RSI, KDJ, and volume) and 89 drawing tools grouped the way trading terminals present them: trend lines, channels, pitchforks, Fibonacci and Gann tools, harmonic patterns, Elliott waves, long and short positions, measurers, shapes, and annotations. An optional UI layer adds a drawing toolbar, a settings card, and on-chart editing.</p>
+    <p class="lede">Open-source developer tools from Bloxwap, Inc., published under the MIT license.</p>
     <div class="cards">
-      <a class="card" href="/chart/docs/getting-started/"><h3>Quick start</h3><p>Build the package and render your first candlestick chart.</p></a>
-      <a class="card" href="/chart/docs/playground/"><h3>Playground</h3><p>Try the full chart with drawing tools and a simulated live feed.</p></a>
-      <a class="card" href="https://github.com/bloxwap/chart"><h3>Source code</h3><p>The MIT-licensed repository and issue tracker on GitHub.</p></a>
+      <a class="card" href="/chart/"><h2>Chart SDK</h2><p><code>@bloxwap/chart</code> — a zero-dependency TypeScript library for interactive financial charts.</p></a>
+      <a class="card" href="/hyperliquid/"><h2>Hyperliquid SDK</h2><p><code>@bloxwap/hyperliquid</code> — a fast, fully typed TypeScript client for the Hyperliquid exchange API.</p></a>
     </div>
-
-    <h2>For AI agents</h2>
-    <p>Machine-readable summaries of when and how to use these projects are available at <a href="/llms.txt">/llms.txt</a> and <a href="/chart/llms.txt">/chart/llms.txt</a>.</p>
   </main>
   <footer>
     <span>© Bloxwap, Inc.</span>
