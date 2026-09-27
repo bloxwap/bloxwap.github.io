@@ -39,6 +39,8 @@ const mids = await info.allMids();
 
 ## Docs
 
+- [Developer portal](https://bloxwap.github.io/developers/): Quickstart guides, documentation, API reference, and sandbox for both SDKs.
+
 - [Chart SDK documentation](https://bloxwap.github.io/chart/docs/): Guides, API reference, and examples.
 - [Chart SDK for agents](https://bloxwap.github.io/chart/llms.txt): When to use the library and how to install and call it.
 - [Quick start](https://bloxwap.github.io/chart/docs/getting-started/): Build the package and render a first chart.
