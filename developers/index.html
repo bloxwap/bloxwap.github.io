@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Developers — Bloxwap on GitHub</title>
-  <meta name="description" content="The Bloxwap developer portal: quickstart guides, documentation, API reference, and an interactive sandbox for the Bloxwap Chart SDK and Hyperliquid SDK." />
+  <meta name="description" content="The Bloxwap developer portal: quickstart guides, documentation, API reference, and an interactive sandbox for the Bloxwap Chart SDK, Hyperliquid SDK, and SFX sound library." />
   <link rel="canonical" href="https://bloxwap.github.io/developers/" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="/styles.css?v=2026-09-26-7" />
@@ -51,14 +51,23 @@
       <a class="card" href="/hyperliquid/docs/guides/"><h3>Guides</h3><p>Market orders, agent wallets and vaults, browser wallets, and smaller bundles.</p></a>
     </div>
 
+    <h2>SFX</h2>
+    <p><code>@bloxwap/sfx</code> is an interface sound-effects library for the web: 19 sounds for hovers, presses, toggles, confirmations, and money moments, synthesized with Web Audio — no audio files, zero dependencies. Install it with <code>npm i @bloxwap/sfx</code>.</p>
+    <div class="cards">
+      <a class="card" href="/sfx/docs/getting-started/"><h3>Quickstart</h3><p>Install the package and wire your first sounds with <code>bind()</code> and <code>play()</code>.</p></a>
+      <a class="card" href="/sfx/"><h3>Sound board</h3><p>Play all 19 sounds live and copy the call for each one.</p></a>
+      <a class="card" href="/sfx/docs/"><h3>Documentation</h3><p>Declarative binding, React and other frameworks, sound design, and accessibility.</p></a>
+      <a class="card" href="/sfx/docs/api/"><h3>API reference</h3><p>play, configure, renderTo, renderBuffer, encodeWav, and every other export.</p></a>
+    </div>
+
     <h2>Access and API keys</h2>
-    <p>Both SDKs are keyless: there are no API keys, accounts, rate limits, or usage fees to manage. The Chart SDK runs entirely in your application — build it from <a href="https://github.com/bloxwap/chart">source</a> and ship it with your app. The Hyperliquid SDK talks directly to Hyperliquid's public API from your own code, and trading signs with your own wallet, never a Bloxwap account.</p>
+    <p>All three projects are keyless: there are no API keys, accounts, rate limits, or usage fees to manage. The Chart SDK runs entirely in your application — build it from <a href="https://github.com/bloxwap/chart">source</a> and ship it with your app. The Hyperliquid SDK talks directly to Hyperliquid's public API from your own code, and trading signs with your own wallet, never a Bloxwap account. SFX synthesizes every sound locally in the browser with Web Audio.</p>
 
     <h2>For AI agents</h2>
-    <p>Machine-readable summaries of when and how to use each project are at <a href="/llms.txt">/llms.txt</a>, <a href="/chart/llms.txt">/chart/llms.txt</a>, and <a href="/hyperliquid/llms.txt">/hyperliquid/llms.txt</a>. Every page is listed in the <a href="/sitemap.xml">sitemap</a>.</p>
+    <p>Machine-readable summaries of when and how to use each project are at <a href="/llms.txt">/llms.txt</a>, <a href="/chart/llms.txt">/chart/llms.txt</a>, <a href="/hyperliquid/llms.txt">/hyperliquid/llms.txt</a>, and <a href="/sfx/llms.txt">/sfx/llms.txt</a>. Every page is listed in the <a href="/sitemap.xml">sitemap</a>.</p>
 
     <h2>Support</h2>
-    <p>Report bugs and ask questions in GitHub issues for the <a href="https://github.com/bloxwap/chart/issues">Chart SDK</a> or <a href="https://github.com/bloxwap/hyperliquid/issues">Hyperliquid SDK</a>, or email <a href="mailto:support@bloxwap.com">support@bloxwap.com</a>.</p>
+    <p>Report bugs and ask questions in GitHub issues for the <a href="https://github.com/bloxwap/chart/issues">Chart SDK</a>, <a href="https://github.com/bloxwap/hyperliquid/issues">Hyperliquid SDK</a>, or <a href="https://github.com/bloxwap/sfx/issues">SFX</a>, or email <a href="mailto:support@bloxwap.com">support@bloxwap.com</a>.</p>
   </main>
   <footer>
     <div class="footer-grid">
