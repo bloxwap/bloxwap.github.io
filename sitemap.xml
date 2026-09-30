@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://bloxwap.github.io/</loc><lastmod>2026-09-26</lastmod></url>
-  <url><loc>https://bloxwap.github.io/developers/</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://bloxwap.github.io/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://bloxwap.github.io/developers/</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://bloxwap.github.io/privacy/</loc><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://bloxwap.github.io/chart/</loc><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://bloxwap.github.io/chart/docs/api/chart/</loc><lastmod>2026-09-26</lastmod></url>
@@ -33,4 +33,17 @@
   <url><loc>https://bloxwap.github.io/hyperliquid/docs/signing/</loc><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://bloxwap.github.io/hyperliquid/docs/transports/</loc><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://bloxwap.github.io/hyperliquid/docs/utilities/</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://bloxwap.github.io/sfx/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://bloxwap.github.io/sfx/docs/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://bloxwap.github.io/sfx/docs/api/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://bloxwap.github.io/sfx/docs/api/recipes/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://bloxwap.github.io/sfx/docs/getting-started/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://bloxwap.github.io/sfx/docs/guides/accessibility/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://bloxwap.github.io/sfx/docs/guides/binding/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://bloxwap.github.io/sfx/docs/guides/frameworks/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://bloxwap.github.io/sfx/docs/guides/native/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://bloxwap.github.io/sfx/docs/guides/react/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://bloxwap.github.io/sfx/docs/guides/sound-design/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://bloxwap.github.io/sfx/docs/performance/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://bloxwap.github.io/sfx/docs/sounds/</loc><lastmod>2026-09-29</lastmod></url>
 </urlset>

@@ -37,9 +37,20 @@ const info = new InfoClient({ transport: new HttpTransport() });
 const mids = await info.allMids();
 ```
 
+## SFX: when to use it
+
+Use SFX (`@bloxwap/sfx`, on npm, MIT-licensed) when an agent or developer needs interface sound effects for a web app: 19 sounds for hovers, presses, toggles, confirmations, and money moments, synthesized with Web Audio — no audio files, zero runtime dependencies. Each sound renders once to a buffer; every play is one AudioBufferSourceNode. Imports are SSR-safe, play() never throws, and playback waits for the first user gesture. Do not use it for long-form music or when you need to ship your own audio files. Full instructions: https://bloxwap.github.io/sfx/llms.txt
+
+```ts
+import { bind, play } from '@bloxwap/sfx';
+
+bind(); // wires every data-sound-* attribute, now and later
+play('success');
+```
+
 ## Docs
 
-- [Developer portal](https://bloxwap.github.io/developers/): Quickstart guides, documentation, API reference, and sandbox for both SDKs.
+- [Developer portal](https://bloxwap.github.io/developers/): Quickstart guides, documentation, API reference, and sandboxes for all three projects.
 
 - [Chart SDK documentation](https://bloxwap.github.io/chart/docs/): Guides, API reference, and examples.
 - [Chart SDK for agents](https://bloxwap.github.io/chart/llms.txt): When to use the library and how to install and call it.
@@ -49,6 +60,10 @@ const mids = await info.allMids();
 - [Hyperliquid SDK documentation](https://bloxwap.github.io/hyperliquid/docs/): Installation, clients, transports, signing, and guides.
 - [Hyperliquid SDK for agents](https://bloxwap.github.io/hyperliquid/llms.txt): When to use the SDK and how to call it; full Markdown at https://bloxwap.github.io/hyperliquid/llms-full.txt
 - [Hyperliquid SDK source code](https://github.com/bloxwap/hyperliquid): MIT-licensed repository and issue tracker.
+- [SFX documentation](https://bloxwap.github.io/sfx/docs/): Declarative binding, frameworks, sound design, and API reference.
+- [SFX for agents](https://bloxwap.github.io/sfx/llms.txt): When to use the library and how to call it.
+- [SFX sound board](https://bloxwap.github.io/sfx/): Play all 19 sounds live in the browser.
+- [SFX source code](https://github.com/bloxwap/sfx): MIT-licensed repository and issue tracker.
 
 ## Company
 
