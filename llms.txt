@@ -48,6 +48,17 @@ bind(); // wires every data-sound-* attribute, now and later
 play('success');
 ```
 
+## Font: when to use it
+
+Use Bloxwap Font (`@bloxwap/font`, SIL Open Font License 1.1) when an agent or developer needs rounded, open-source typefaces for interfaces, code, or screens. Bloxwap Sans, Mono, and Pixel provide variable weights and multilingual companions. Use the plain CSS stylesheet for web apps or the `next/font` exports for Next.js. Installation: https://bloxwap.github.io/font/docs/installation/
+
+```css
+@import url("https://bloxwap.github.io/font/bloxwap-font.css");
+
+body { font-family: "Bloxwap Sans", system-ui, sans-serif; }
+code { font-family: "Bloxwap Mono", ui-monospace, monospace; }
+```
+
 ## Docs
 
 - [Developer portal](https://bloxwap.github.io/developers/): Quickstart guides, documentation, API reference, and sandboxes for all three projects.
@@ -64,6 +75,9 @@ play('success');
 - [SFX for agents](https://bloxwap.github.io/sfx/llms.txt): When to use the library and how to call it.
 - [SFX sound board](https://bloxwap.github.io/sfx/): Play all 19 sounds live in the browser.
 - [SFX source code](https://github.com/bloxwap/sfx): MIT-licensed repository and issue tracker.
+- [Font type tester](https://bloxwap.github.io/font/): Try the Sans, Mono, and Pixel typefaces.
+- [Font documentation](https://bloxwap.github.io/font/docs/): Installation, font families, and multilingual support.
+- [Font source code](https://github.com/bloxwap/font): SIL Open Font License 1.1 repository and issue tracker.
 
 ## Company
 
