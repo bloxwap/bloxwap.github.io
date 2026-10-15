@@ -4,14 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Developers — Bloxwap on GitHub</title>
-  <meta name="description" content="The Bloxwap developer portal: quickstart guides, documentation, API reference, and an interactive sandbox for the Bloxwap Chart SDK, Hyperliquid SDK, and SFX sound library." />
+  <meta name="description" content="The Bloxwap developer portal: quickstart guides, documentation, API reference, and an interactive sandbox for the Bloxwap Chart SDK, Hyperliquid SDK, SFX sound library, Haptic feedback library, and Bloxwap Font." />
   <link rel="canonical" href="https://bloxwap.github.io/developers/" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="/styles.css?v=2026-09-26-7" />
+  <link rel="preload" href="/assets/font/BloxwapSans-Variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/font/bloxwap-font.css?v=0.1.2" />
+  <link rel="stylesheet" href="/assets/hig/tokens.css?v=sha872906a9" />
+  <link rel="stylesheet" href="/styles.css?v=2026-10-15-1" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Bloxwap on GitHub" />
   <meta property="og:title" content="Developers — Bloxwap on GitHub" />
+  <meta property="og:description" content="Quickstart guides, documentation, and API reference for the Bloxwap Chart SDK, Hyperliquid SDK, SFX, Haptic, and Bloxwap Font." />
   <meta property="og:url" content="https://bloxwap.github.io/developers/" />
   <meta property="og:image" content="https://bloxwap.github.io/og/home.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Bloxwap on GitHub: open-source developer tools and typefaces from Bloxwap, Inc." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@bloxwap" />
+  <meta name="twitter:image" content="https://bloxwap.github.io/og/home.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -31,7 +42,7 @@
   <main>
     <p class="eyebrow">Developer portal</p>
     <h1>Build with Bloxwap</h1>
-    <p class="lede">Quickstart guides, documentation, API reference, and a sandbox for Bloxwap's open-source developer tools, published under the MIT license.</p>
+    <p class="lede">Quickstart guides, documentation, API reference, and a sandbox for Bloxwap's open-source developer tools, published under the MIT and SIL Open Font licenses.</p>
 
     <h2>Chart SDK</h2>
     <p><code>@bloxwap/chart</code> is a zero-dependency TypeScript library for interactive financial charts that runs in browsers, workers, server rendering, and tests.</p>
@@ -60,14 +71,32 @@
       <a class="card" href="/sfx/docs/api/"><h3>API reference</h3><p>play, configure, renderTo, renderBuffer, encodeWav, and every other export.</p></a>
     </div>
 
+    <h2>Haptic</h2>
+    <p><code>@bloxwap/haptic</code> is haptic feedback for React: one wrapper component with eleven presets and custom patterns, physical-tap ticks on iOS and vibration on capable browsers. The target keeps its handlers, ref, focus, and accessibility. Install it with <code>npm i @bloxwap/haptic</code>.</p>
+    <div class="cards">
+      <a class="card" href="/haptic/docs/"><h3>Documentation</h3><p>Add feedback to a React target without replacing its behavior.</p></a>
+      <a class="card" href="/haptic/docs/patterns/"><h3>Patterns</h3><p>Eleven feedback presets and four ways to describe custom vibration.</p></a>
+      <a class="card" href="/haptic/docs/platforms/"><h3>Platforms</h3><p>Physical iOS taps, browser vibration, hydration, and device verification.</p></a>
+      <a class="card" href="/haptic/docs/api/"><h3>API reference</h3><p>Every component, prop, helper, and public type.</p></a>
+    </div>
+
+    <h2>Font</h2>
+    <p><code>@bloxwap/font</code> ships Bloxwap Sans, Mono, and Pixel: rounded variable typefaces for interfaces, code, and screens, with multilingual companions, under the SIL Open Font License. Install it with <code>npm i @bloxwap/font</code>.</p>
+    <div class="cards">
+      <a class="card" href="/font/"><h3>Type tester</h3><p>Try Sans, Mono, and Pixel live in the browser.</p></a>
+      <a class="card" href="/font/docs/installation/"><h3>Installation</h3><p>Desktop downloads, npm, self-hosted <code>@font-face</code>, Next.js, and Tailwind CSS.</p></a>
+      <a class="card" href="/font/docs/"><h3>Documentation</h3><p>The three families, companions, OpenType features, and variable axes.</p></a>
+      <a class="card" href="/font/docs/language-support/"><h3>Language support</h3><p>Script coverage and language lists for every family.</p></a>
+    </div>
+
     <h2>Access and API keys</h2>
-    <p>All three projects are keyless: there are no API keys, accounts, rate limits, or usage fees to manage. The Chart SDK runs entirely in your application — build it from <a href="https://github.com/bloxwap/chart">source</a> and ship it with your app. The Hyperliquid SDK talks directly to Hyperliquid's public API from your own code, and trading signs with your own wallet, never a Bloxwap account. SFX synthesizes every sound locally in the browser with Web Audio.</p>
+    <p>All five projects are keyless: there are no API keys, accounts, rate limits, or usage fees to manage. The Chart SDK runs entirely in your application — build it from <a href="https://github.com/bloxwap/chart">source</a> and ship it with your app. The Hyperliquid SDK talks directly to Hyperliquid's public API from your own code, and trading signs with your own wallet, never a Bloxwap account. SFX synthesizes every sound locally in the browser with Web Audio, Haptic runs on the device, and Bloxwap Font is a set of files you host yourself.</p>
 
     <h2>For AI agents</h2>
-    <p>Machine-readable summaries of when and how to use each project are at <a href="/llms.txt">/llms.txt</a>, <a href="/chart/llms.txt">/chart/llms.txt</a>, <a href="/hyperliquid/llms.txt">/hyperliquid/llms.txt</a>, and <a href="/sfx/llms.txt">/sfx/llms.txt</a>. Every page is listed in the <a href="/sitemap.xml">sitemap</a>.</p>
+    <p>Machine-readable summaries of when and how to use each project are at <a href="/llms.txt">/llms.txt</a>, <a href="/chart/llms.txt">/chart/llms.txt</a>, <a href="/hyperliquid/llms.txt">/hyperliquid/llms.txt</a>, <a href="/sfx/llms.txt">/sfx/llms.txt</a>, and <a href="/font/llms.txt">/font/llms.txt</a>. Every page is listed in the <a href="/sitemap.xml">sitemap</a>.</p>
 
     <h2>Support</h2>
-    <p>Report bugs and ask questions in GitHub issues for the <a href="https://github.com/bloxwap/chart/issues">Chart SDK</a>, <a href="https://github.com/bloxwap/hyperliquid/issues">Hyperliquid SDK</a>, or <a href="https://github.com/bloxwap/sfx/issues">SFX</a>, or email <a href="mailto:support@bloxwap.com">support@bloxwap.com</a>.</p>
+    <p>Report bugs and ask questions in GitHub issues for the <a href="https://github.com/bloxwap/chart/issues">Chart SDK</a>, <a href="https://github.com/bloxwap/hyperliquid/issues">Hyperliquid SDK</a>, <a href="https://github.com/bloxwap/sfx/issues">SFX</a>, <a href="https://github.com/bloxwap/haptic/issues">Haptic</a>, or <a href="https://github.com/bloxwap/font/issues">Font</a>, or email <a href="mailto:support@bloxwap.com">support@bloxwap.com</a>.</p>
   </main>
   <footer>
     <div class="footer-grid">

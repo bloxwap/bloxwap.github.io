@@ -1,0 +1,255 @@
+{
+  "label": "after",
+  "root": "/private/tmp/claude-501/-Users-joeblau-Developer-bloxwap-src-hig/9e79ba27-1509-4529-84ad-51a5eca6a061/scratchpad/work2/github-io",
+  "browser": "Chromium 141.0.7390.37",
+  "pages": {
+    "/": {
+      "files": [
+        {
+          "path": "/",
+          "type": "text/html",
+          "status": 200,
+          "raw": 11290,
+          "transfer": 2820
+        },
+        {
+          "path": "/assets/font/bloxwap-font.css?v=0.1.2",
+          "type": "text/css",
+          "status": 200,
+          "raw": 1327,
+          "transfer": 521
+        },
+        {
+          "path": "/assets/hig/tokens.css?v=sha872906a9",
+          "type": "text/css",
+          "status": 200,
+          "raw": 5003,
+          "transfer": 1183
+        },
+        {
+          "path": "/styles.css?v=2026-10-15-1",
+          "type": "text/css",
+          "status": 200,
+          "raw": 5359,
+          "transfer": 1436
+        },
+        {
+          "path": "/lockup.svg?v=4",
+          "type": "image/svg+xml",
+          "status": 200,
+          "raw": 13313,
+          "transfer": 4300
+        },
+        {
+          "path": "/assets/font/BloxwapSans-Variable.woff2",
+          "type": "font/woff2",
+          "status": 200,
+          "raw": 310848,
+          "transfer": 310848
+        },
+        {
+          "path": "/assets/font/BloxwapMono-Variable.woff2",
+          "type": "font/woff2",
+          "status": 200,
+          "raw": 281948,
+          "transfer": 281948
+        }
+      ],
+      "requests": 7,
+      "raw": 629088,
+      "transfer": 603056,
+      "html": 11290,
+      "css": 11689,
+      "fonts": 592796,
+      "images": 13313,
+      "documentHeight": 1002,
+      "overflowAt": false
+    },
+    "/developers/": {
+      "files": [
+        {
+          "path": "/developers/",
+          "type": "text/html",
+          "status": 200,
+          "raw": 10093,
+          "transfer": 3158
+        },
+        {
+          "path": "/assets/font/bloxwap-font.css?v=0.1.2",
+          "type": "text/css",
+          "status": 200,
+          "raw": 1327,
+          "transfer": 521
+        },
+        {
+          "path": "/assets/hig/tokens.css?v=sha872906a9",
+          "type": "text/css",
+          "status": 200,
+          "raw": 5003,
+          "transfer": 1183
+        },
+        {
+          "path": "/styles.css?v=2026-10-15-1",
+          "type": "text/css",
+          "status": 200,
+          "raw": 5359,
+          "transfer": 1436
+        },
+        {
+          "path": "/lockup.svg?v=4",
+          "type": "image/svg+xml",
+          "status": 200,
+          "raw": 13313,
+          "transfer": 4300
+        },
+        {
+          "path": "/assets/font/BloxwapSans-Variable.woff2",
+          "type": "font/woff2",
+          "status": 200,
+          "raw": 310848,
+          "transfer": 310848
+        },
+        {
+          "path": "/assets/font/BloxwapMono-Variable.woff2",
+          "type": "font/woff2",
+          "status": 200,
+          "raw": 281948,
+          "transfer": 281948
+        }
+      ],
+      "requests": 7,
+      "raw": 627891,
+      "transfer": 603394,
+      "html": 10093,
+      "css": 11689,
+      "fonts": 592796,
+      "images": 13313,
+      "documentHeight": 2982,
+      "overflowAt": false
+    },
+    "/privacy/": {
+      "files": [
+        {
+          "path": "/privacy/",
+          "type": "text/html",
+          "status": 200,
+          "raw": 5611,
+          "transfer": 1986
+        },
+        {
+          "path": "/assets/font/bloxwap-font.css?v=0.1.2",
+          "type": "text/css",
+          "status": 200,
+          "raw": 1327,
+          "transfer": 521
+        },
+        {
+          "path": "/assets/hig/tokens.css?v=sha872906a9",
+          "type": "text/css",
+          "status": 200,
+          "raw": 5003,
+          "transfer": 1183
+        },
+        {
+          "path": "/styles.css?v=2026-10-15-1",
+          "type": "text/css",
+          "status": 200,
+          "raw": 5359,
+          "transfer": 1436
+        },
+        {
+          "path": "/lockup.svg?v=4",
+          "type": "image/svg+xml",
+          "status": 200,
+          "raw": 13313,
+          "transfer": 4300
+        },
+        {
+          "path": "/assets/font/BloxwapSans-Variable.woff2",
+          "type": "font/woff2",
+          "status": 200,
+          "raw": 310848,
+          "transfer": 310848
+        },
+        {
+          "path": "/assets/font/BloxwapMono-Variable.woff2",
+          "type": "font/woff2",
+          "status": 200,
+          "raw": 281948,
+          "transfer": 281948
+        }
+      ],
+      "requests": 7,
+      "raw": 623409,
+      "transfer": 602222,
+      "html": 5611,
+      "css": 11689,
+      "fonts": 592796,
+      "images": 13313,
+      "documentHeight": 1340,
+      "overflowAt": false
+    },
+    "/no-such-page/": {
+      "files": [
+        {
+          "path": "/no-such-page/",
+          "type": "text/html",
+          "status": 404,
+          "raw": 2764,
+          "transfer": 1069
+        },
+        {
+          "path": "/assets/font/bloxwap-font.css?v=0.1.2",
+          "type": "text/css",
+          "status": 200,
+          "raw": 1327,
+          "transfer": 521
+        },
+        {
+          "path": "/assets/hig/tokens.css?v=sha872906a9",
+          "type": "text/css",
+          "status": 200,
+          "raw": 5003,
+          "transfer": 1183
+        },
+        {
+          "path": "/styles.css?v=2026-10-15-1",
+          "type": "text/css",
+          "status": 200,
+          "raw": 5359,
+          "transfer": 1436
+        },
+        {
+          "path": "/lockup.svg?v=4",
+          "type": "image/svg+xml",
+          "status": 200,
+          "raw": 13313,
+          "transfer": 4300
+        },
+        {
+          "path": "/assets/font/BloxwapSans-Variable.woff2",
+          "type": "font/woff2",
+          "status": 200,
+          "raw": 310848,
+          "transfer": 310848
+        },
+        {
+          "path": "/assets/font/BloxwapMono-Variable.woff2",
+          "type": "font/woff2",
+          "status": 200,
+          "raw": 281948,
+          "transfer": 281948
+        }
+      ],
+      "requests": 7,
+      "raw": 620562,
+      "transfer": 601305,
+      "html": 2764,
+      "css": 11689,
+      "fonts": 592796,
+      "images": 13313,
+      "documentHeight": 900,
+      "overflowAt": false
+    }
+  }
+}

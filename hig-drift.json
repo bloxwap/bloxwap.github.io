@@ -1,0 +1,31 @@
+{
+  "paths": ["styles.css", "assets", "scripts", "tests", "playwright.config.mjs"],
+  "canonical": [],
+  "obsoleteImports": [],
+  "exceptions": [
+    {
+      "path": "assets/hig/tokens.css",
+      "rule": "copied-token-definition",
+      "owner": "bloxwap/bloxwap.github.io maintainers (named assignment pending, bloxwap/hig#57)",
+      "reason": "GitHub Pages serves this repository without a build step, so scripts/sync-hig.mjs copies @bloxwap/hig-tokens/css byte-for-byte from the checksummed candidate tarball; npm run check fails if the copy differs",
+      "expires": "2027-01-15",
+      "tracking": "https://github.com/bloxwap/hig/issues/56"
+    },
+    {
+      "path": "assets/hig/tokens.css",
+      "rule": "copied-palette",
+      "owner": "bloxwap/bloxwap.github.io maintainers (named assignment pending, bloxwap/hig#57)",
+      "reason": "same verified package copy as above; the palette values are HIG's own",
+      "expires": "2027-01-15",
+      "tracking": "https://github.com/bloxwap/hig/issues/56"
+    },
+    {
+      "path": "assets/font/",
+      "rule": "copied-font-binary",
+      "owner": "bloxwap/bloxwap.github.io maintainers (named assignment pending, bloxwap/hig#57)",
+      "reason": "no build step: scripts/sync-hig.mjs copies the two Latin variable faces from the lockfile-pinned @bloxwap/font 0.1.2 package; npm run check fails if they differ",
+      "expires": "2027-01-15",
+      "tracking": "https://github.com/bloxwap/bloxwap.github.io/issues/25"
+    }
+  ]
+}
