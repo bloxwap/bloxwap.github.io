@@ -1,0 +1,143 @@
+{
+  "label": "before",
+  "root": "/private/tmp/claude-501/-Users-joeblau-Developer-bloxwap-src-hig/9e79ba27-1509-4529-84ad-51a5eca6a061/scratchpad/work2/github-io-before",
+  "browser": "Chromium 141.0.7390.37",
+  "pages": {
+    "/": {
+      "files": [
+        {
+          "path": "/",
+          "type": "text/html",
+          "status": 200,
+          "raw": 10908,
+          "transfer": 2721
+        },
+        {
+          "path": "/styles.css?v=2026-09-26-7",
+          "type": "text/css",
+          "status": 200,
+          "raw": 3368,
+          "transfer": 1157
+        },
+        {
+          "path": "/lockup.svg?v=4",
+          "type": "image/svg+xml",
+          "status": 200,
+          "raw": 13313,
+          "transfer": 4300
+        }
+      ],
+      "requests": 3,
+      "raw": 27589,
+      "transfer": 8178,
+      "html": 10908,
+      "css": 3368,
+      "fonts": 0,
+      "images": 13313,
+      "documentHeight": 1037,
+      "overflowAt": false
+    },
+    "/developers/": {
+      "files": [
+        {
+          "path": "/developers/",
+          "type": "text/html",
+          "status": 200,
+          "raw": 7056,
+          "transfer": 2365
+        },
+        {
+          "path": "/styles.css?v=2026-09-26-7",
+          "type": "text/css",
+          "status": 200,
+          "raw": 3368,
+          "transfer": 1157
+        },
+        {
+          "path": "/lockup.svg?v=4",
+          "type": "image/svg+xml",
+          "status": 200,
+          "raw": 13313,
+          "transfer": 4300
+        }
+      ],
+      "requests": 3,
+      "raw": 23737,
+      "transfer": 7822,
+      "html": 7056,
+      "css": 3368,
+      "fonts": 0,
+      "images": 13313,
+      "documentHeight": 2366,
+      "overflowAt": false
+    },
+    "/privacy/": {
+      "files": [
+        {
+          "path": "/privacy/",
+          "type": "text/html",
+          "status": 200,
+          "raw": 4707,
+          "transfer": 1786
+        },
+        {
+          "path": "/styles.css?v=2026-09-26-7",
+          "type": "text/css",
+          "status": 200,
+          "raw": 3368,
+          "transfer": 1157
+        },
+        {
+          "path": "/lockup.svg?v=4",
+          "type": "image/svg+xml",
+          "status": 200,
+          "raw": 13313,
+          "transfer": 4300
+        }
+      ],
+      "requests": 3,
+      "raw": 21388,
+      "transfer": 7243,
+      "html": 4707,
+      "css": 3368,
+      "fonts": 0,
+      "images": 13313,
+      "documentHeight": 1487,
+      "overflowAt": false
+    },
+    "/no-such-page/": {
+      "files": [
+        {
+          "path": "/no-such-page/",
+          "type": "text/html",
+          "status": 404,
+          "raw": 2507,
+          "transfer": 983
+        },
+        {
+          "path": "/styles.css?v=2026-09-26-7",
+          "type": "text/css",
+          "status": 200,
+          "raw": 3368,
+          "transfer": 1157
+        },
+        {
+          "path": "/lockup.svg?v=4",
+          "type": "image/svg+xml",
+          "status": 200,
+          "raw": 13313,
+          "transfer": 4300
+        }
+      ],
+      "requests": 3,
+      "raw": 19188,
+      "transfer": 6440,
+      "html": 2507,
+      "css": 3368,
+      "fonts": 0,
+      "images": 13313,
+      "documentHeight": 900,
+      "overflowAt": false
+    }
+  }
+}

@@ -1,0 +1,41 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22.22.0'
+          cache: npm
+      - run: npm ci
+      # Checksummed HIG tarball, lockfile pins, committed token/font/mark copies, styles.css roles, pages, brand and OG card.
+      - run: npm run check
+      # Scoped drift check from HIG pinned to the same commit as the vendored tarball.
+      - id: hig
+        run: echo "commit=$(node -p "require('./vendor/bloxwap-hig/provenance.json').commit")" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: bloxwap/hig
+          ref: ${{ steps.hig.outputs.commit }}
+          path: .hig
+          persist-credentials: false
+      - run: npm run drift
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: failure()
+        with:
+          name: playwright-results
+          path: test-results/

@@ -75,6 +75,8 @@ code { font-family: "Bloxwap Mono", ui-monospace, monospace; }
 - [SFX for agents](https://bloxwap.github.io/sfx/llms.txt): When to use the library and how to call it.
 - [SFX sound board](https://bloxwap.github.io/sfx/): Play all 19 sounds live in the browser.
 - [SFX source code](https://github.com/bloxwap/sfx): MIT-licensed repository and issue tracker.
+- [Haptic documentation](https://bloxwap.github.io/haptic/docs/): Presets, custom patterns, platforms, and API reference.
+- [Haptic source code](https://github.com/bloxwap/haptic): MIT-licensed repository and issue tracker.
 - [Font type tester](https://bloxwap.github.io/font/): Try the Sans, Mono, and Pixel typefaces.
 - [Font documentation](https://bloxwap.github.io/font/docs/): Installation, font families, and multilingual support.
 - [Font source code](https://github.com/bloxwap/font): SIL Open Font License 1.1 repository and issue tracker.
