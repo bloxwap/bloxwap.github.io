@@ -1,0 +1,384 @@
+{
+  "home@desktop": {
+    "scrollW": 1440,
+    "clientW": 1440,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 11056,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2"
+    ]
+  },
+  "developers@desktop": {
+    "scrollW": 1440,
+    "clientW": 1440,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 9111,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2"
+    ]
+  },
+  "privacy@desktop": {
+    "scrollW": 1440,
+    "clientW": 1440,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 4855,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2"
+    ]
+  },
+  "404@desktop": {
+    "scrollW": 1440,
+    "clientW": 1440,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 2655,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2"
+    ]
+  },
+  "home@390": {
+    "scrollW": 390,
+    "clientW": 390,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 11056,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2"
+    ]
+  },
+  "developers@390": {
+    "scrollW": 390,
+    "clientW": 390,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 9111,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2"
+    ]
+  },
+  "privacy@390": {
+    "scrollW": 390,
+    "clientW": 390,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 4855,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2"
+    ]
+  },
+  "404@390": {
+    "scrollW": 390,
+    "clientW": 390,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 2655,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2"
+    ]
+  },
+  "home@320": {
+    "scrollW": 320,
+    "clientW": 320,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 11056,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2"
+    ]
+  },
+  "developers@320": {
+    "scrollW": 320,
+    "clientW": 320,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 9111,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2"
+    ]
+  },
+  "privacy@320": {
+    "scrollW": 320,
+    "clientW": 320,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 4855,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2"
+    ]
+  },
+  "404@320": {
+    "scrollW": 320,
+    "clientW": 320,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 2655,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2"
+    ]
+  },
+  "home@640-200pct": {
+    "scrollW": 640,
+    "clientW": 640,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 11056,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2"
+    ]
+  },
+  "developers@640-200pct": {
+    "scrollW": 640,
+    "clientW": 640,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 9111,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2"
+    ]
+  },
+  "privacy@640-200pct": {
+    "scrollW": 640,
+    "clientW": 640,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 4855,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2"
+    ]
+  },
+  "404@640-200pct": {
+    "scrollW": 640,
+    "clientW": 640,
+    "bodyFont": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "\"Bloxwap Sans\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [
+      "Bloxwap Sans normal",
+      "Bloxwap Mono normal"
+    ],
+    "overflow": false,
+    "bytes": {
+      "css": 60622,
+      "font": 592796,
+      "img": 13313,
+      "html": 2655,
+      "other": 0
+    },
+    "fonts": [
+      "/font/fonts/BloxwapMono/variable/BloxwapMono%5Bwght%5D.woff2",
+      "/font/fonts/BloxwapSans/variable/BloxwapSans%5Bwght%5D.woff2"
+    ]
+  },
+  "keyboard": [
+    {
+      "tag": "A",
+      "text": "",
+      "href": "/",
+      "outline": "solid 2px color(display-p3 0 1 0.24)",
+      "offset": "2px"
+    },
+    {
+      "tag": "A",
+      "text": "Chart SDK@bloxwap/chart — a ze",
+      "href": "/chart/",
+      "outline": "solid 2px color(display-p3 0 1 0.24)",
+      "offset": "2px"
+    },
+    {
+      "tag": "A",
+      "text": "Hyperliquid SDK@bloxwap/hyperl",
+      "href": "/hyperliquid/",
+      "outline": "solid 2px color(display-p3 0 1 0.24)",
+      "offset": "2px"
+    },
+    {
+      "tag": "A",
+      "text": "SFX@bloxwap/sfx — interface so",
+      "href": "/sfx/",
+      "outline": "solid 2px color(display-p3 0 1 0.24)",
+      "offset": "2px"
+    }
+  ]
+}

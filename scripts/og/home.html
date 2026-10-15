@@ -1,0 +1,28 @@
+<!doctype html>
+<!-- Source for og/home.png (1200×630). Render with: node scripts/render-og.mjs (needs Playwright). -->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="/assets/hig/tokens.css" />
+  <link rel="stylesheet" href="/font/bloxwap-font.css" />
+  <style>
+    html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: var(--hig-background); color: var(--hig-text); }
+    body { position: relative; font-family: "Bloxwap Sans", sans-serif; }
+    .bar { position: absolute; inset: 0 auto 0 0; width: 24px; background: var(--hig-action); }
+    header { position: absolute; top: 56px; left: 80px; right: 74px; display: flex; align-items: center; gap: 20px; }
+    header img { height: 44px; }
+    .tag { color: var(--hig-action); font: 600 24px/1 "Bloxwap Mono", monospace; letter-spacing: 0.12em; }
+    .dot { color: var(--hig-faint); font-size: 20px; }
+    .kind { margin-left: auto; color: var(--hig-muted); font: 500 18px/1 "Bloxwap Mono", monospace; letter-spacing: 0.12em; }
+    h1 { position: absolute; top: 230px; left: 80px; margin: 0; font-size: 104px; font-weight: 700; line-height: 1.02; letter-spacing: -0.02em; }
+    p { position: absolute; top: 500px; left: 80px; width: 960px; margin: 0; color: var(--hig-muted); font-size: 28px; line-height: 1.35; }
+  </style>
+</head>
+<body>
+  <div class="bar"></div>
+  <header><img src="/lockup.svg" alt="Bloxwap" /><span class="dot">•</span><span class="tag">GITHUB</span><span class="kind">OPEN SOURCE</span></header>
+  <h1>Open source.<br />Trading tools.</h1>
+  <p>Chart SDK, Hyperliquid SDK, SFX, Haptic and Bloxwap Font from Bloxwap, Inc., MIT and OFL licensed on GitHub.</p>
+</body>
+</html>

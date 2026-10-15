@@ -1,0 +1,288 @@
+{
+  "home@desktop": {
+    "scrollW": 1440,
+    "clientW": 1440,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": false,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 10908,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "developers@desktop": {
+    "scrollW": 1440,
+    "clientW": 1440,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": false,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 7056,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "privacy@desktop": {
+    "scrollW": 1440,
+    "clientW": 1440,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": false,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 4707,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "404@desktop": {
+    "scrollW": 1440,
+    "clientW": 1440,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": false,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 2507,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "home@390": {
+    "scrollW": 390,
+    "clientW": 390,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": false,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 10908,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "developers@390": {
+    "scrollW": 390,
+    "clientW": 390,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": false,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 7056,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "privacy@390": {
+    "scrollW": 390,
+    "clientW": 390,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": false,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 4707,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "404@390": {
+    "scrollW": 390,
+    "clientW": 390,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": false,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 2507,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "home@320": {
+    "scrollW": 344,
+    "clientW": 320,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": true,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 10908,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "developers@320": {
+    "scrollW": 344,
+    "clientW": 320,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": true,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 7056,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "privacy@320": {
+    "scrollW": 320,
+    "clientW": 320,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": false,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 4707,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "404@320": {
+    "scrollW": 320,
+    "clientW": 320,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": false,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 2507,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "home@640-200pct": {
+    "scrollW": 640,
+    "clientW": 640,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": false,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 10908,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "developers@640-200pct": {
+    "scrollW": 640,
+    "clientW": 640,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": false,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 7056,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "privacy@640-200pct": {
+    "scrollW": 640,
+    "clientW": 640,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": false,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 4707,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "404@640-200pct": {
+    "scrollW": 640,
+    "clientW": 640,
+    "bodyFont": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "h1Font": "ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "loaded": [],
+    "overflow": false,
+    "bytes": {
+      "css": 3368,
+      "font": 0,
+      "img": 13313,
+      "html": 2507,
+      "other": 0
+    },
+    "fonts": []
+  },
+  "keyboard": [
+    {
+      "tag": "A",
+      "text": "",
+      "href": "/",
+      "outline": "auto 1px rgb(16, 16, 16)",
+      "offset": "1px"
+    },
+    {
+      "tag": "A",
+      "text": "Chart SDK@bloxwap/chart — a ze",
+      "href": "/chart/",
+      "outline": "auto 1px rgb(16, 16, 16)",
+      "offset": "1px"
+    },
+    {
+      "tag": "A",
+      "text": "Hyperliquid SDK@bloxwap/hyperl",
+      "href": "/hyperliquid/",
+      "outline": "auto 1px rgb(16, 16, 16)",
+      "offset": "1px"
+    },
+    {
+      "tag": "A",
+      "text": "SFX@bloxwap/sfx — interface so",
+      "href": "/sfx/",
+      "outline": "auto 1px rgb(16, 16, 16)",
+      "offset": "1px"
+    }
+  ]
+}
