@@ -1,0 +1,6 @@
+{
+  "paths": ["styles.css", "server.ts", "scripts", "index.html", "404.html", "developers", "privacy"],
+  "canonical": [],
+  "obsoleteImports": [],
+  "exceptions": []
+}

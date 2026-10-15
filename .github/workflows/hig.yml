@@ -1,0 +1,40 @@
+name: HIG
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  hig:
+    name: Tokens, drift and site checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Read the pinned HIG commit
+        id: lock
+        run: echo "commit=$(node -p "require('./hig.lock.json').commit")" >> "$GITHUB_OUTPUT"
+
+      # The drift script and the token source come from the same pinned HIG commit as assets/hig/.
+      - uses: actions/checkout@v4
+        with:
+          repository: bloxwap/hig
+          ref: ${{ steps.lock.outputs.commit }}
+          path: .hig
+
+      - name: assets/hig matches the pinned @bloxwap/hig-tokens
+        run: node scripts/sync-hig.mjs --hig .hig --check
+
+      - name: Scoped anti-drift check
+        run: node .hig/scripts/drift.mjs --root . --config hig-drift.json
+
+      - name: Site check
+        run: node scripts/check-site.mjs
