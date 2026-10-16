@@ -18,16 +18,39 @@ const error = message => errors.push(message);
 // ---- styles.css -----------------------------------------------------------------------------
 const tokens = read('assets/hig/tokens.css');
 const roles = new Set([...tokens.matchAll(/(--hig-[\w-]+)\s*:/g)].map(m => m[1]));
-const css = read('styles.css').replace(/\/\*[\s\S]*?\*\//g, '');
+// CHECK_STYLES checks another stylesheet in place of styles.css (scripts/check.test.mjs plants literals with it).
+const stylesheet = process.env.CHECK_STYLES ?? join(root, 'styles.css');
+const css = readFileSync(stylesheet, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
 
 if (/#[0-9a-f]{3,8}\b/i.test(css)) error('styles.css: hex colour literal');
 if (/\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color)\(/i.test(css)) error('styles.css: colour function literal');
-if (/:\s*(?:black|white|red|green|blue|gr[ae]y|silver|lime)\b/i.test(css)) error('styles.css: named colour literal');
 for (const [, name] of css.matchAll(/(--[\w-]+)\s*:/g)) error(`styles.css: defines ${name}; roles come from @bloxwap/hig-tokens/css`);
 for (const [, name] of css.matchAll(/var\(\s*(--[\w-]+)/g)) if (!roles.has(name)) error(`styles.css: ${name} is not a role in @bloxwap/hig-tokens/css`);
 
 const LITERAL = /(?<![\w-])-?\d*\.?\d+(?:px|rem|em|ch|pt|ms|s|%)?(?![\w-])/; // a bare number or length
 const role = value => value.replace(/var\(--hig-[\w-]+\)/g, '');
+// CSS Color 4 named and system colours, plus the deprecated system colours except `background` (a property name that
+// transition values list). transparent and currentcolor stay allowed.
+const NAMED_COLOURS = new Set(`aliceblue antiquewhite aqua aquamarine azure beige bisque black blanchedalmond blue blueviolet brown
+  burlywood cadetblue chartreuse chocolate coral cornflowerblue cornsilk crimson cyan darkblue darkcyan darkgoldenrod darkgray
+  darkgreen darkgrey darkkhaki darkmagenta darkolivegreen darkorange darkorchid darkred darksalmon darkseagreen darkslateblue
+  darkslategray darkslategrey darkturquoise darkviolet deeppink deepskyblue dimgray dimgrey dodgerblue firebrick floralwhite
+  forestgreen fuchsia gainsboro ghostwhite gold goldenrod gray green greenyellow grey honeydew hotpink indianred indigo ivory khaki
+  lavender lavenderblush lawngreen lemonchiffon lightblue lightcoral lightcyan lightgoldenrodyellow lightgray lightgreen lightgrey
+  lightpink lightsalmon lightseagreen lightskyblue lightslategray lightslategrey lightsteelblue lightyellow lime limegreen linen
+  magenta maroon mediumaquamarine mediumblue mediumorchid mediumpurple mediumseagreen mediumslateblue mediumspringgreen
+  mediumturquoise mediumvioletred midnightblue mintcream mistyrose moccasin navajowhite navy oldlace olive olivedrab orange orangered
+  orchid palegoldenrod palegreen paleturquoise palevioletred papayawhip peachpuff peru pink plum powderblue purple rebeccapurple red
+  rosybrown royalblue saddlebrown salmon sandybrown seagreen seashell sienna silver skyblue slateblue slategray slategrey snow
+  springgreen steelblue tan teal thistle tomato turquoise violet wheat white whitesmoke yellow yellowgreen
+  accentcolor accentcolortext activetext buttonborder buttonface buttontext canvas canvastext field fieldtext graytext highlight
+  highlighttext linktext mark marktext selecteditem selecteditemtext visitedtext
+  activeborder activecaption appworkspace buttonhighlight buttonshadow captiontext inactiveborder inactivecaption
+  inactivecaptiontext infobackground infotext menu menutext scrollbar threeddarkshadow threedface threedhighlight
+  threedlightshadow threedshadow window windowframe windowtext`.split(/\s+/).filter(Boolean));
+/** Named colour keywords anywhere in a declaration value, outside var(--hig-*) references, strings and url(). */
+const namedColours = value => [...role(value).replace(/"[^"]*"|'[^']*'|url\([^)]*\)/gi, '').matchAll(/(?<![\w-])[a-z]+(?![\w-])/gi)]
+  .map(m => m[0]).filter(word => NAMED_COLOURS.has(word.toLowerCase()));
 const rules = [
   // [property pattern, what must hold after removing var(--hig-*) references]
   [/^(?:color|background|background-color|border-color|outline-color|text-decoration-color|fill|stroke)$/, v => /^(?:\s|transparent|currentcolor|inherit|color-mix\(in srgb,|\d+%|,|\))*$/i.test(role(v)), 'colour'],
@@ -35,12 +58,15 @@ const rules = [
   [/^(?:margin|padding|gap|row-gap|column-gap)(?:-[\w-]+)?$/, v => role(v).split(/\s+/).every(part => ['', '0', 'auto'].includes(part)), 'space'],
   [/^border(?:-[\w-]+)?-radius$/, v => role(v).trim() === '', 'radius'],
   [/^(?:transition|transition-duration|animation-duration)$/, v => !/\d(?:ms|s)\b/.test(role(v)), 'motion'],
+  // Heights scale with root text (the lockup at 200% text, bloxwap.github.io#27): rem, a role or a viewport unit, never px.
+  [/^(?:height|min-height|max-height|block-size|min-block-size|max-block-size)$/, v => !/\dpx\b/.test(role(v)), 'size (or rem)'],
 ];
 for (const [, body] of css.matchAll(/\{([^{}]*)\}/g)) {
   for (const decl of body.split(';')) {
     const at = decl.indexOf(':');
     if (at < 0) continue;
     const property = decl.slice(0, at).trim(), value = decl.slice(at + 1).trim();
+    for (const word of namedColours(value)) error(`styles.css: ${property}: ${value} — named colour "${word}"; use a --hig-* colour role`);
     for (const [pattern, ok, kind] of rules) if (pattern.test(property) && !ok(value)) error(`styles.css: ${property}: ${value} — use a --hig-* ${kind} role`);
   }
 }

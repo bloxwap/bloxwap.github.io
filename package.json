@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "node scripts/serve.mjs",
     "sync:hig": "node scripts/sync-hig.mjs",
-    "check": "node scripts/check.mjs && node scripts/sync-hig.mjs --check",
+    "check": "node scripts/check.mjs && node --test scripts/check.test.mjs && node scripts/sync-hig.mjs --check",
+    "test:check": "node --test scripts/check.test.mjs",
     "drift": "node scripts/drift.mjs",
     "test:e2e": "playwright test",
     "og": "node scripts/og.mjs",

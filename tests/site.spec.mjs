@@ -72,6 +72,24 @@ for (const [path, status] of PAGES) {
       }
     });
 
+    test('brand lockups scale with 200% root text', async ({page}) => {
+      await page.setViewportSize({width: 1280, height: 900});
+      await open(page, path, status);
+      const measure = () => page.evaluate(() => [...document.querySelectorAll('.nav .brand img, .footer-brand .brand img')].map(img => {
+        const box = img.getBoundingClientRect();
+        return {where: img.closest('.nav') ? 'nav' : 'footer', loaded: img.complete && img.naturalWidth > 0, w: box.width, h: box.height};
+      }));
+      const base = await measure();
+      expect(base.map(lockup => lockup.where)).toEqual(['nav', 'footer']);
+      for (const lockup of base) expect(lockup.loaded, `${lockup.where} lockup loaded`).toBe(true);
+      await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
+      const large = await measure();
+      for (const [i, lockup] of large.entries()) {
+        expect(lockup.h, `${lockup.where} lockup height at 200% text`).toBeCloseTo(base[i].h * 2, 0);
+        expect(lockup.w / lockup.h, `${lockup.where} lockup keeps its aspect ratio`).toBeCloseTo(base[i].w / base[i].h, 1);
+      }
+    });
+
     for (const [width, text] of [[320, '100%'], [390, '100%'], [1280, '200%']]) {
       test(`reflows without horizontal scrolling at ${width}px with ${text} text`, async ({page}) => {
         await page.setViewportSize({width, height: 900});

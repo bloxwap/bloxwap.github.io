@@ -12,7 +12,8 @@ Root GitHub Pages site for Bloxwap's open-source projects. Pages serves `main` a
 
 The pages follow the [Bloxwap HIG](https://github.com/bloxwap/hig) plain-CSS path (bloxwap/hig#61):
 
-- `styles.css` uses only `--hig-*` roles (colour, type, space, radius, motion, density). It defines no values of its own; `npm run check` fails on literal colours, type, spacing, radius or durations.
+- `styles.css` uses only `--hig-*` roles (colour, type, space, radius, motion, density). It defines no values of its own; `npm run check` fails on literal colours (hex, colour functions, and named colours anywhere in a value, shorthands included, outside `var(--hig-*)`), type, spacing, radius, durations or `px` heights. `scripts/check.test.mjs` (`npm run test:check`, also part of `npm run check`) plants literals to prove each rule fails.
+- The nav and footer lockups are sized in `rem`, so they scale with root text; `npm run test:e2e` checks they double at 200% text.
 - `assets/hig/tokens.css` is `@bloxwap/hig-tokens/css`, and `icon.svg` is the approved mark `@bloxwap/hig-tokens/mark.svg`, both from the checksummed candidate tarball in `vendor/bloxwap-hig/` (HIG is not on npm yet, bloxwap/hig#56).
 - `assets/font/` holds the Latin Bloxwap Sans and Mono faces from `@bloxwap/font` 0.1.2 (pinned in `package-lock.json`) and their `@font-face` rules.
 - `lockup.svg` is the supplied Bloxwap lockup, verbatim from bloxwap/font `apps/docs/public/logos/bloxwap-lockup.svg`; `npm run check` verifies its hash.
@@ -25,7 +26,7 @@ Never edit `assets/hig/`, `assets/font/`, `assets/provenance.json` or `icon.svg`
 ```sh
 npm ci
 npm run dev          # http://localhost:3900
-npm run check        # literal/role, page, brand and OG checks; verifies the committed copies
+npm run check        # literal/role, page, brand and OG checks plus planted-literal tests; verifies the committed copies
 npm run drift        # scoped HIG drift check from a HIG checkout pinned to the vendored commit
 npx playwright install chromium
 npm run test:e2e     # fonts, roles, keyboard focus, 320px/390px and 200% text reflow, SDK links, OG card
