@@ -10,10 +10,11 @@ import {fileURLToPath} from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const styles = readFileSync(join(root, 'styles.css'), 'utf8');
+const scratch = process.env.RUNNER_TEMP || tmpdir();
 
 /** Runs scripts/check.mjs with `extra` appended to styles.css; returns {status, output}. */
 function check(extra) {
-  const dir = mkdtempSync(join(tmpdir(), 'check-'));
+  const dir = mkdtempSync(join(scratch, 'check-'));
   try {
     const file = join(dir, 'styles.css');
     writeFileSync(file, `${styles}\n${extra}\n`);

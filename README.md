@@ -32,6 +32,8 @@ npx playwright install chromium
 npm run test:e2e     # fonts, roles, keyboard focus, 320px/390px and 200% text reflow, SDK links, OG card
 ```
 
+CI (`site` in `.github/workflows/ci.yml`) runs on self-hosted Apple Silicon Mac minis (`runs-on: [self-hosted, macOS, ARM64]`). See [docs/ci-runners.md](docs/ci-runners.md) for the runner labels and tools. GitHub Pages still publishes `main` as-is.
+
 ## Upgrading HIG
 
 1. In a bloxwap/hig checkout at a reviewed commit, run `npm ci && npm run generate:fonts && npm run build && npm run release:dry-run -- --channel candidate` (no publish, tag or release).
