@@ -48,8 +48,8 @@ const NAMED_COLOURS = new Set(`aliceblue antiquewhite aqua aquamarine azure beig
   activeborder activecaption appworkspace buttonhighlight buttonshadow captiontext inactiveborder inactivecaption
   inactivecaptiontext infobackground infotext menu menutext scrollbar threeddarkshadow threedface threedhighlight
   threedlightshadow threedshadow window windowframe windowtext`.split(/\s+/).filter(Boolean));
-/** Named colour keywords anywhere in a declaration value, outside var(--hig-*) references, strings and url(). */
-const namedColours = value => [...role(value).replace(/"[^"]*"|'[^']*'|url\([^)]*\)/gi, '').matchAll(/(?<![\w-])[a-z]+(?![\w-])/gi)]
+/** Named colour keywords in a declaration value, excluding function names, var(--hig-*), strings and url(). */
+const namedColours = value => [...role(value).replace(/"[^"]*"|'[^']*'|url\([^)]*\)/gi, '').matchAll(/(?<![\w-])[a-z]+(?![\w-]|\()/gi)]
   .map(m => m[0]).filter(word => NAMED_COLOURS.has(word.toLowerCase()));
 const rules = [
   // [property pattern, what must hold after removing var(--hig-*) references]

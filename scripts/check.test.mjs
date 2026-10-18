@@ -37,6 +37,8 @@ for (const [planted, word] of [
   ['.x{background:var(--hig-surface) url("a.png") no-repeat rebeccapurple}', 'rebeccapurple'],
   ['.x{text-shadow:1px 1px 0 white, 0 0 2px var(--hig-focus)}', 'white'],
   ['.x{border-block-end:thin solid canvastext}', 'canvastext'],
+  ['.x{border:1px solid tan}', 'tan'],
+  ['.x{box-shadow:calc(tan(45deg)*1rem) 0 tan}', 'tan'],
   ['@media (max-width: 480px) { .x { box-shadow: inset 0 0 0 1px navy; } }', 'navy'],
 ]) {
   test(`fails on ${planted}`, () => {
@@ -52,6 +54,7 @@ for (const allowed of [
   '.x{list-style:url("/black.svg") inside}',
   '.x{font-family:"Gold Sans", var(--hig-font-sans)}',
   '.x{transition:background var(--hig-motion-duration-fast) var(--hig-motion-easing-standard)}',
+  '.x{width:calc(tan(45deg)*1rem)}',
 ]) {
   test(`allows ${allowed}`, () => {
     const {status, output} = check(allowed);
