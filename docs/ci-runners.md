@@ -6,7 +6,7 @@ The first-party `site` job in [`.github/workflows/ci.yml`](../.github/workflows/
 runs-on: [self-hosted, macOS, ARM64]
 ```
 
-Jobs stay queued until a runner with all three labels is online. Workflows do not call `apt`, `sudo`, or `playwright install --with-deps` (that flag installs Linux packages). Shell used by CI is POSIX / BSD-portable and writes scratch files under `$RUNNER_TEMP` (`TMPDIR` is set to `${{ runner.temp }}`).
+Jobs stay queued until a runner with all three labels is online. Workflows do not call `apt`, `sudo`, or `playwright install --with-deps` (that flag installs Linux packages). Shell used by CI is POSIX / BSD-portable and writes scratch files under `$RUNNER_TEMP` (exported as `TMPDIR` and `PLAYWRIGHT_BROWSERS_PATH` via `$GITHUB_ENV`).
 
 ## Not migrated
 
