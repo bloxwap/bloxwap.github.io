@@ -8,9 +8,15 @@ runs-on: [self-hosted, macOS, ARM64]
 
 Jobs stay queued until a runner with all three labels is online. Workflows do not call `apt`, `sudo`, or `playwright install --with-deps` (that flag installs Linux packages). Shell used by CI is POSIX / BSD-portable and writes scratch files under `$RUNNER_TEMP` (exported as `TMPDIR` and `PLAYWRIGHT_BROWSERS_PATH` via `$GITHUB_ENV`).
 
+## Caching
+
+Do **not** set `cache: npm` (or `package-manager-cache: true` on setup-node v5+) on these runners. The minis already keep `~/.npm` on disk (`/Users/admin/.npm`), so `npm ci` is about a second. GitHub's remote Actions cache for this lockfile is ~883 MB and crosses the WAN at a few MB/s; restore plus save was ~217s p50 in the Oct 17–20 window and 717s on the first mini save.
+
 ## Not migrated
 
-GitHub Pages for this repository is the built-in **Deploy from a branch** flow (`main` `/`, `build_type: legacy`). The GitHub-managed `pages-build-deployment` workflow is not a file in this repo and cannot select a self-hosted runner. Leave it on GitHub-hosted infrastructure so `https://bloxwap.github.io/` keeps updating from `main` with no build step.
+GitHub Pages for this repository is still the built-in **Deploy from a branch** flow (`main` `/`, `build_type: legacy`). The GitHub-managed `pages-build-deployment` workflow is not a file in this repo, runs on GitHub-hosted runners, and cannot select a Mac mini.
+
+To run deploy on the minis instead: **Settings → Pages → Build and deployment → Source: GitHub Actions** (today it is **Deploy from a branch**). Then add a first-party workflow with `actions/upload-pages-artifact` and `actions/deploy-pages` on `[self-hosted, macOS, ARM64]`, triggered on `push` to `main` only — do not upload the Pages artifact on pull requests. Do not flip that setting until that workflow exists; `actions/deploy-pages` fails while the source is still branch-based. Pages itself has no build step (`https://bloxwap.github.io/` publishes `main` as-is).
 
 ## Prerequisites on each Mac mini
 
@@ -42,7 +48,8 @@ Browsers go to `$RUNNER_TEMP/ms-playwright` (`PLAYWRIGHT_BROWSERS_PATH`). There 
 - GNU `sed` / GNU `grep` / `jq`
 - Homebrew `gnu-tar` (`gtar`) — this repo does not upload a Pages artifact
 - PulseAudio, `xvfb`, or other Linux desktop packages
-- Preinstalled npm dependencies (each job runs `npm ci`)
+- Preinstalled `node_modules` (each job runs `npm ci`; the machine npm cache at `~/.npm` is enough — do not restore GitHub's remote `actions/cache`)
+- GitHub Pages deploy from Actions (still the built-in branch publisher until the Pages source is switched; see **Not migrated**)
 
 ## Operator notes
 

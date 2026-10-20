@@ -24,10 +24,12 @@ jobs:
           echo "TMPDIR=$RUNNER_TEMP" >> "$GITHUB_ENV"
           echo "PLAYWRIGHT_BROWSERS_PATH=$RUNNER_TEMP/ms-playwright" >> "$GITHUB_ENV"
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      # No cache: npm. GitHub's remote cache is ~883 MB and restore/save dominated
+      # Oct 17–20 job time (~217s p50, 717s on the first mini save). The minis
+      # already persist ~/.npm, and setup-node v4 has no package-manager-cache input.
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22.22.0'
-          cache: npm
       - run: npm ci
       # Checksummed HIG tarball, lockfile pins, committed token/font/mark copies, styles.css roles, pages, brand and OG card.
       - run: npm run check
