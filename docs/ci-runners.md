@@ -1,6 +1,6 @@
 # CI runners
 
-The first-party `site` job in [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) runs on the org Apple Silicon Mac minis:
+The first-party `site` and `deploy` jobs in [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) run on the org Apple Silicon Mac minis:
 
 ```yaml
 runs-on: [self-hosted, macOS, ARM64]
@@ -12,11 +12,17 @@ Jobs stay queued until a runner with all three labels is online. Workflows do no
 
 Do **not** set `cache: npm` (or `package-manager-cache: true` on setup-node v5+) on these runners. The minis already keep `~/.npm` on disk (`/Users/admin/.npm`), so `npm ci` is about a second. GitHub's remote Actions cache for this lockfile is ~883 MB and crosses the WAN at a few MB/s; restore plus save was ~217s p50 in the Oct 17–20 window and 717s on the first mini save.
 
-## Not migrated
+## Pages deployment
 
-GitHub Pages for this repository is still the built-in **Deploy from a branch** flow (`main` `/`, `build_type: legacy`). The GitHub-managed `pages-build-deployment` workflow is not a file in this repo, runs on GitHub-hosted runners, and cannot select a Mac mini.
+Pages now deploys from Actions on the minis. After `site` succeeds, `deploy` publishes the committed repository root on pushes to `main` and manual `workflow_dispatch` runs on `main`. Pull requests never deploy. The publish directory keeps `.nojekyll` and excludes only `.git`, `.github`, `node_modules`, `.hig`, `test-results`, and `playwright-report`; deployment does not install npm dependencies or generate site files.
 
-To run deploy on the minis instead: **Settings → Pages → Build and deployment → Source: GitHub Actions** (today it is **Deploy from a branch**). Then add a first-party workflow with `actions/upload-pages-artifact` and `actions/deploy-pages` on `[self-hosted, macOS, ARM64]`, triggered on `push` to `main` only — do not upload the Pages artifact on pull requests. Do not flip that setting until that workflow exists; `actions/deploy-pages` fails while the source is still branch-based. Pages itself has no build step (`https://bloxwap.github.io/` publishes `main` as-is).
+The repository's Pages source must be set to **GitHub Actions** under **Settings → Pages → Build and deployment → Source**, replacing **Deploy from a branch**. Alternatively, run:
+
+```sh
+gh api -X PUT repos/bloxwap/bloxwap.github.io/pages -f build_type=workflow
+```
+
+Deployments are serialized without cancellation. Only pull request CI runs cancel older runs for the same pull request.
 
 ## Prerequisites on each Mac mini
 
@@ -27,6 +33,7 @@ Install these on the machine (or confirm they are already present). Do not rely 
 | GitHub Actions runner | Registered with the default labels `self-hosted`, `macOS`, and `ARM64` |
 | Xcode Command Line Tools | Provides `git` for `actions/checkout` |
 | `bash` and `/bin/sh` | Workflow `run:` steps (macOS ships both; bash 3.2 is enough) |
+| `rsync`, GNU `tar` (`gtar`) | Prepares the publish directory and packages the Pages artifact on macOS |
 | `curl`, `tar`, `sed`, `shasum` | Stock macOS. Not invoked by this workflow today; keep them for BSD-portable scripts |
 | Outbound HTTPS | `github.com` (this repo and `bloxwap/hig`), the npm registry, and Playwright's browser CDN |
 
@@ -46,10 +53,8 @@ Browsers go to `$RUNNER_TEMP/ms-playwright` (`PLAYWRIGHT_BROWSERS_PATH`). There 
 
 - Docker or container actions
 - GNU `sed` / GNU `grep` / `jq`
-- Homebrew `gnu-tar` (`gtar`) — this repo does not upload a Pages artifact
 - PulseAudio, `xvfb`, or other Linux desktop packages
-- Preinstalled `node_modules` (each job runs `npm ci`; the machine npm cache at `~/.npm` is enough — do not restore GitHub's remote `actions/cache`)
-- GitHub Pages deploy from Actions (still the built-in branch publisher until the Pages source is switched; see **Not migrated**)
+- Preinstalled `node_modules` (the `site` job runs `npm ci`; the machine npm cache at `~/.npm` is enough — do not restore GitHub's remote `actions/cache`)
 
 ## Operator notes
 
@@ -62,4 +67,4 @@ Browsers go to `$RUNNER_TEMP/ms-playwright` (`PLAYWRIGHT_BROWSERS_PATH`). There 
 | Workflow | Job | Runner |
 | --- | --- | --- |
 | [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) | `site` | self-hosted Mac mini |
-| GitHub Pages (`pages-build-deployment`) | deploy | GitHub-hosted (legacy branch publish; not selectable) |
+| [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) | `deploy` | self-hosted Mac mini |
