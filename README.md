@@ -1,6 +1,6 @@
 # bloxwap.github.io
 
-Root GitHub Pages site for Bloxwap's open-source projects. Pages serves `main` as-is, with no build step.
+Root GitHub Pages site for Bloxwap's open-source projects. Pages deploys the committed `main` site as-is through GitHub Actions on the org Mac minis, with no site build step.
 
 - [bloxwap/chart](https://github.com/bloxwap/chart) — Chart SDK, docs at https://bloxwap.github.io/chart/
 - [bloxwap/hyperliquid](https://github.com/bloxwap/hyperliquid) — Hyperliquid SDK, docs at https://bloxwap.github.io/hyperliquid/
@@ -32,7 +32,7 @@ npx playwright install chromium
 npm run test:e2e     # fonts, roles, keyboard focus, 320px/390px and 200% text reflow, SDK links, OG card
 ```
 
-CI (`site` in `.github/workflows/ci.yml`) runs on self-hosted Apple Silicon Mac minis (`runs-on: [self-hosted, macOS, ARM64]`). See [docs/ci-runners.md](docs/ci-runners.md) for the runner labels and tools. GitHub Pages still publishes `main` as-is.
+CI (`site` in `.github/workflows/ci.yml`) runs on self-hosted Apple Silicon Mac minis (`runs-on: [self-hosted, macOS, ARM64]`). See [docs/ci-runners.md](docs/ci-runners.md) for the runner labels and tools. The `deploy` job publishes Pages after CI on pushes to `main` and manual runs on `main`. The repository Pages source must be **GitHub Actions** in **Settings → Pages**, as described in the runner docs.
 
 ## Upgrading HIG
 
