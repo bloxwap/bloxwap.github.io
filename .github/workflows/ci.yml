@@ -29,7 +29,7 @@ jobs:
       # already persist ~/.npm, and setup-node v4 has no package-manager-cache input.
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: '22.22.0'
+          node-version: '24'
       - run: npm ci
       # Checksummed HIG tarball, lockfile pins, committed token/font/mark copies, styles.css roles, pages, brand and OG card.
       - run: npm run check
