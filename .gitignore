@@ -2,3 +2,9 @@ node_modules/
 test-results/
 playwright-report/
 .hig/
+
+# Generated from locked npm packages by npm run build.
+/assets/hig/
+/assets/font/
+/assets/provenance.json
+/icon.svg

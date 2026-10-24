@@ -1,9 +1,0 @@
-{
-  "source": "https://github.com/bloxwap/hig",
-  "commit": "872906a9071469af8714b3b6fb5cc7bd64d2d6f3",
-  "version": "0.1.0-candidate.sha872906a9",
-  "producedWith": "npm ci && npm run generate:fonts && npm run build && npm run release:dry-run -- --channel candidate",
-  "packages": {
-    "@bloxwap/hig-tokens": "bloxwap-hig-tokens-0.1.0-candidate.sha872906a9.tgz"
-  }
-}

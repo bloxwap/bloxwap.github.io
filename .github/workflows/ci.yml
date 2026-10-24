@@ -31,11 +31,12 @@ jobs:
         with:
           node-version: '22.22.0'
       - run: npm ci
-      # Checksummed HIG tarball, lockfile pins, committed token/font/mark copies, styles.css roles, pages, brand and OG card.
+      - run: npm run build
+      # Registry integrity, generated token/font/mark assets, styles.css roles, pages, brand and OG card.
       - run: npm run check
-      # Scoped drift check from HIG pinned to the same commit as the vendored tarball.
+      # Scoped drift check from the exact published HIG source commit.
       - id: hig
-        run: echo "commit=$(node -p "require('./vendor/bloxwap-hig/provenance.json').commit")" >> "$GITHUB_OUTPUT"
+        run: echo "commit=$(node -p "require('./docs/hig-release.json').commit")" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           repository: bloxwap/hig
@@ -46,6 +47,18 @@ jobs:
       # Chromium only; no --with-deps (that flag installs apt packages on Linux).
       - run: npx playwright install chromium
       - run: npm run test:e2e
+      - name: Prepare tested publish directory
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          mkdir -p "$RUNNER_TEMP/site"
+          rsync -a --delete --exclude='.git' --exclude='.github' --exclude='node_modules' --exclude='.hig' --exclude='test-results' --exclude='playwright-report' ./ "$RUNNER_TEMP/site/"
+          for path in .nojekyll 404.html og assets developers docs privacy robots.txt sitemap.xml llms.txt icon.svg lockup.svg styles.css; do
+            test -e "$RUNNER_TEMP/site/$path"
+          done
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        with:
+          path: ${{ runner.temp }}/site
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: failure()
         with:
@@ -71,17 +84,6 @@ jobs:
     steps:
       - name: Use runner temp for scratch files
         run: echo "TMPDIR=$RUNNER_TEMP" >> "$GITHUB_ENV"
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
-      - name: Prepare publish directory
-        run: |
-          mkdir -p "$RUNNER_TEMP/site"
-          rsync -a --delete --exclude='.git' --exclude='.github' --exclude='node_modules' --exclude='.hig' --exclude='test-results' --exclude='playwright-report' ./ "$RUNNER_TEMP/site/"
-          for path in .nojekyll 404.html og assets developers docs privacy robots.txt sitemap.xml llms.txt icon.svg lockup.svg styles.css; do
-            test -e "$RUNNER_TEMP/site/$path"
-          done
-      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
-        with:
-          path: ${{ runner.temp }}/site
       - uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
         id: deployment

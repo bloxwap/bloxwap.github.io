@@ -1,6 +1,6 @@
 # bloxwap.github.io
 
-Root GitHub Pages site for Bloxwap's open-source projects. Pages deploys the committed `main` site as-is through GitHub Actions on the org Mac minis, with no site build step.
+Root GitHub Pages site for Bloxwap's open-source projects. GitHub Actions on the org Mac minis generates package-owned assets, validates the site, and deploys the tested `main` artifact.
 
 - [bloxwap/chart](https://github.com/bloxwap/chart) — Chart SDK, docs at https://bloxwap.github.io/chart/
 - [bloxwap/hyperliquid](https://github.com/bloxwap/hyperliquid) — Hyperliquid SDK, docs at https://bloxwap.github.io/hyperliquid/
@@ -14,20 +14,21 @@ The pages follow the [Bloxwap HIG](https://github.com/bloxwap/hig) plain-CSS pat
 
 - `styles.css` uses only `--hig-*` roles (colour, type, space, radius, motion, density). It defines no values of its own; `npm run check` fails on literal colours (hex, colour functions, and named colours anywhere in a value, shorthands included, outside `var(--hig-*)`), type, spacing, radius, durations or `px` heights. `scripts/check.test.mjs` (`npm run test:check`, also part of `npm run check`) plants literals to prove each rule fails.
 - The nav and footer lockups are sized in `rem`, so they scale with root text; `npm run test:e2e` checks they double at 200% text.
-- `assets/hig/tokens.css` is `@bloxwap/hig-tokens/css`, and `icon.svg` is the approved mark `@bloxwap/hig-tokens/mark.svg`, both from the checksummed candidate tarball in `vendor/bloxwap-hig/` (HIG is not on npm yet, bloxwap/hig#56).
+- `assets/hig/tokens.css` is `@bloxwap/hig-tokens/css`, and `icon.svg` is the approved mark `@bloxwap/hig-tokens/mark.svg`, both generated from the exact npm `@bloxwap/hig-tokens@0.1.0` release. [`docs/hig-release.json`](docs/hig-release.json) and the lockfile pin its registry URL and integrity hash.
 - `assets/font/` holds the Latin Bloxwap Sans and Mono faces from `@bloxwap/font` 0.1.2 (pinned in `package-lock.json`) and their `@font-face` rules.
 - `lockup.svg` is the supplied Bloxwap lockup, verbatim from bloxwap/font `apps/docs/public/logos/bloxwap-lockup.svg`; `npm run check` verifies its hash.
 - `og/home.png` is rendered from `scripts/og-card.html` with `npm run og`.
 
-Never edit `assets/hig/`, `assets/font/`, `assets/provenance.json` or `icon.svg` by hand. They are written by `npm run sync:hig`, and CI fails if they differ from the pinned packages. Generated copies are committed because Pages has no build step; bloxwap/bloxwap.github.io#25 tracks removing them.
+Never edit `assets/hig/`, `assets/font/`, `assets/provenance.json` or `icon.svg` by hand. `npm run build` (also available as `npm run sync:hig`) generates these ignored outputs from the locked packages. CI checks their bytes, tests the resulting site and uploads that same directory for Pages deployment. The generated assets and vendored candidate tarballs are no longer committed; all three copied-asset drift exceptions are retired (#25). HIG 0.1.0 used token publishing and has no npm provenance attestation.
 
 ## Develop
 
 ```sh
 npm ci
+npm run build        # generate CSS, fonts, approved mark and asset hashes
 npm run dev          # http://localhost:3900
-npm run check        # literal/role, page, brand and OG checks plus planted-literal tests; verifies the committed copies
-npm run drift        # scoped HIG drift check from a HIG checkout pinned to the vendored commit
+npm run check        # literal/role, page, brand and OG checks plus planted-literal tests; verifies the generated assets
+npm run drift        # scoped HIG drift check from a HIG checkout pinned to the published source commit
 npx playwright install chromium
 npm run test:e2e     # fonts, roles, keyboard focus, 320px/390px and 200% text reflow, SDK links, OG card
 ```
@@ -36,8 +37,10 @@ CI (`site` in `.github/workflows/ci.yml`) runs on self-hosted Apple Silicon Mac 
 
 ## Upgrading HIG
 
-1. In a bloxwap/hig checkout at a reviewed commit, run `npm ci && npm run generate:fonts && npm run build && npm run release:dry-run -- --channel candidate` (no publish, tag or release).
-2. Replace the tarball in `vendor/bloxwap-hig/`, update `SHA256SUMS`, `provenance.json` and the `file:` dependency, then run `npm install`.
-3. Run `npm run sync:hig`, `npm run check`, `npm run drift` and `npm run test:e2e`, and update the bloxwap.github.io row in bloxwap/hig `planning/adoption.json`.
+1. Update the exact `@bloxwap/hig-tokens` version in `package.json` and run `npm install`.
+2. Update `docs/hig-release.json` with the reviewed release source commit, registry URL and integrity from the lockfile. Check out that commit in `.hig` if a local drift checkout already exists.
+3. Run `npm run build`, `npm run check`, `npm run drift` and `npm run test:e2e`, and update the bloxwap.github.io row in bloxwap/hig `planning/adoption.json`.
+
+Validation for the registry and generated-asset migration is in [docs/hig-registry-verification.json](docs/hig-registry-verification.json). Fonts and marks retain the exact prior bytes; homepage and developer-page screenshots at 1440px and 390px are byte-identical.
 
 Rollback: revert the adopting PR.
