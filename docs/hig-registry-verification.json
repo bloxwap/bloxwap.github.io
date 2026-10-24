@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-23",
+  "baselineCommit": "0b649d56123d8304c98a0784e2f0daebcd03c0a7",
+  "higVersion": "0.1.0",
+  "higRelease": "https://github.com/bloxwap/hig/releases/tag/v0.1.0",
+  "validation": {
+    "npmCi": "pass; zero audit vulnerabilities",
+    "check": {
+      "testsPassed": 17,
+      "generatedAssetVerification": "pass"
+    },
+    "drift": {
+      "result": "pass",
+      "files": 11,
+      "exceptions": 0
+    },
+    "browser": {
+      "passed": 28,
+      "browser": "Chromium via Playwright 1.56.1"
+    },
+    "actionlint": "pass",
+    "negativeControls": [
+      "registry integrity mutation rejected before generation",
+      "corrupted generated CSS rejected"
+    ],
+    "cleanGeneration": "all six outputs deleted and regenerated successfully",
+    "assembledPublishDirectory": {
+      "passed": 28,
+      "assembly": "same rsync exclusions as CI; served from separate directory"
+    }
+  },
+  "screenshots": [
+    {
+      "view": "developers-390.png",
+      "byteIdentical": true,
+      "sha256": "eaf454fa106c24b68d9a368eef6e8c90b05dd317057e8789a5e60cb594942c7f"
+    },
+    {
+      "view": "developers-desktop.png",
+      "byteIdentical": true,
+      "sha256": "aed54e8fb21a012fe3718598315a09d3bebdb50fcd5fd9885655d35adb4d7298"
+    },
+    {
+      "view": "home-390.png",
+      "byteIdentical": true,
+      "sha256": "fd66c319a361ac5157ad4514ab980f9d484372c0dd60cdecb6dcf7bfb227367a"
+    },
+    {
+      "view": "home-desktop.png",
+      "byteIdentical": true,
+      "sha256": "6d2fead312a527bbcb34fef18c1e9f35fce8df83d584b3c2b1c78114c27c3b70"
+    }
+  ],
+  "assetsBefore": {
+    "assets/hig/tokens.css": {
+      "sha256": "23b13c5b2dd7de3e3d57899dc6af01906f534eb81c9a4c05480160e28c7d4beb",
+      "bytes": 5003
+    },
+    "icon.svg": {
+      "sha256": "a1f1cea3e2e6d7173b674d72225314cedb76ec1fd62b1fe5649d9e361bb4fea8",
+      "bytes": 8236
+    },
+    "assets/font/BloxwapSans-Variable.woff2": {
+      "sha256": "96f6be58023b1d22152c797336282a4330a47ab4a3c0ab87451be887903746b7",
+      "bytes": 310848
+    },
+    "assets/font/BloxwapMono-Variable.woff2": {
+      "sha256": "fa66e41575807c3d260d8f5b493be349cac127836b0174976c7d4876237d2632",
+      "bytes": 281948
+    },
+    "assets/font/bloxwap-font.css": {
+      "sha256": "61722bcef769b8e7d2df8ddec56160dacae221fce3f3f3e7e9f0366cb26efc66",
+      "bytes": 1327
+    }
+  },
+  "assetsAfter": {
+    "assets/hig/tokens.css": {
+      "sha256": "7beba3a64c88b565cb2a25015f9ce1057a88aa84b4cc4b595d566c1d44a6b6e3",
+      "bytes": 5145
+    },
+    "icon.svg": {
+      "sha256": "a1f1cea3e2e6d7173b674d72225314cedb76ec1fd62b1fe5649d9e361bb4fea8",
+      "bytes": 8236
+    },
+    "assets/font/BloxwapSans-Variable.woff2": {
+      "sha256": "96f6be58023b1d22152c797336282a4330a47ab4a3c0ab87451be887903746b7",
+      "bytes": 310848
+    },
+    "assets/font/BloxwapMono-Variable.woff2": {
+      "sha256": "fa66e41575807c3d260d8f5b493be349cac127836b0174976c7d4876237d2632",
+      "bytes": 281948
+    },
+    "assets/font/bloxwap-font.css": {
+      "sha256": "61722bcef769b8e7d2df8ddec56160dacae221fce3f3f3e7e9f0366cb26efc66",
+      "bytes": 1327
+    }
+  },
+  "limitations": [
+    "Screenshots and browser tests are automated evidence, not physical-device acceptance.",
+    "The HIG 0.1.0 registry release has no npm provenance attestation."
+  ]
+}

@@ -14,7 +14,7 @@ Do **not** set `cache: npm` (or `package-manager-cache: true` on setup-node v5+)
 
 ## Pages deployment
 
-Pages now deploys from Actions on the minis. After `site` succeeds, `deploy` publishes the committed repository root on pushes to `main` and manual `workflow_dispatch` runs on `main`. Pull requests never deploy. The publish directory keeps `.nojekyll` and excludes only `.git`, `.github`, `node_modules`, `.hig`, `test-results`, and `playwright-report`; deployment does not install npm dependencies or generate site files.
+Pages now deploys from Actions on the minis. The `site` job runs `npm ci` and `npm run build` to generate package-owned tokens, fonts and the approved mark, then validates the generated files and runs browser tests. On pushes to `main` and manual `workflow_dispatch` runs on `main`, it uploads that tested site as the Pages artifact. After `site` succeeds, `deploy` publishes that artifact without rebuilding it. Pull requests never deploy. The publish directory keeps `.nojekyll` and excludes only `.git`, `.github`, `node_modules`, `.hig`, `test-results`, and `playwright-report`.
 
 The repository's Pages source must be set to **GitHub Actions** under **Settings → Pages → Build and deployment → Source**, replacing **Deploy from a branch**. Alternatively, run:
 

@@ -1,18 +1,18 @@
 // Copies the pinned HIG token CSS, the approved Bloxwap mark and the Bloxwap web fonts into the
-// static site. GitHub Pages serves this repository as-is (no build step), so the outputs are
-// committed; this script is the only thing allowed to write them.
+// static site. CI generates and tests these ignored outputs before uploading the Pages artifact;
+// this script is the only thing allowed to write them.
 //
 //   npm run sync:hig            # verify inputs, then write the outputs
-//   npm run sync:hig -- --check # verify inputs, then fail if a committed output differs
+//   npm run sync:hig -- --check # verify inputs, then fail if a generated output differs
 //
 // Inputs are verified before anything is read:
-//   - every vendored HIG tarball matches vendor/bloxwap-hig/SHA256SUMS,
-//   - the lockfile pins @bloxwap/hig-tokens to that tarball (same sha512) and @bloxwap/font to 0.1.2,
+//   - the lockfile pins @bloxwap/hig-tokens to the reviewed npm URL and integrity,
+//   - @bloxwap/font remains pinned to 0.1.2,
 //   - the installed packages report the pinned versions (npm ci checks their integrity).
 // Outputs are byte-for-byte package files, except assets/font/bloxwap-font.css, which keeps the
 // package's own @font-face rules for the two faces the site uses and only rewrites their URLs.
 import {createHash} from 'node:crypto';
-import {existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync} from 'node:fs';
+import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 import {dirname, join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 
@@ -22,33 +22,27 @@ const read = path => readFileSync(join(root, path));
 const sha = (algorithm, bytes, encoding = 'hex') => createHash(algorithm).update(bytes).digest(encoding);
 const fail = message => { console.error(`sync-hig: ${message}`); process.exit(1); };
 
-// 1. Vendored HIG tarballs and their reviewed checksums.
-const vendor = 'vendor/bloxwap-hig';
-const provenance = JSON.parse(read(`${vendor}/provenance.json`));
-const sums = new Map(read(`${vendor}/SHA256SUMS`).toString().trim().split('\n').map(line => line.trim().split(/\s+/).reverse()));
-const tarballs = readdirSync(join(root, vendor)).filter(file => file.endsWith('.tgz')).sort();
-if (JSON.stringify([...sums.keys()].sort()) !== JSON.stringify(tarballs)) fail(`${vendor}/SHA256SUMS must list exactly the vendored tarballs (${tarballs.join(', ')})`);
-for (const file of tarballs) if (sha('sha256', read(`${vendor}/${file}`)) !== sums.get(file)) fail(`checksum mismatch for ${vendor}/${file}`);
-
-// 2. Lockfile pins.
+// 1. Reviewed registry release and matching dependency/lockfile pins.
+const release = JSON.parse(read('docs/hig-release.json'));
+const manifestPackage = JSON.parse(read('package.json'));
 const lock = JSON.parse(read('package-lock.json')).packages;
-const tokensTarball = provenance.packages['@bloxwap/hig-tokens'];
 const tokensLock = lock['node_modules/@bloxwap/hig-tokens'];
-if (tokensLock?.resolved !== `file:${vendor}/${tokensTarball}`) fail('package-lock.json must resolve @bloxwap/hig-tokens to the vendored tarball');
-if (tokensLock.integrity !== `sha512-${sha('sha512', read(`${vendor}/${tokensTarball}`), 'base64')}`) fail('package-lock.json integrity for @bloxwap/hig-tokens does not match the vendored tarball');
+if (manifestPackage.devDependencies['@bloxwap/hig-tokens'] !== release.version) fail('@bloxwap/hig-tokens must use the exact reviewed registry version');
+if (tokensLock?.version !== release.version || tokensLock.resolved !== `https://registry.npmjs.org/@bloxwap/hig-tokens/-/hig-tokens-${release.version}.tgz` || tokensLock.resolved !== release.resolved) fail('package-lock.json must resolve @bloxwap/hig-tokens to the reviewed npm release');
+if (tokensLock.integrity !== release.integrity) fail('package-lock.json integrity for @bloxwap/hig-tokens differs from the reviewed registry release');
 const FONT_VERSION = '0.1.2';
 const fontLock = lock['node_modules/@bloxwap/font'];
 if (fontLock?.version !== FONT_VERSION || fontLock.resolved !== `https://registry.npmjs.org/@bloxwap/font/-/font-${FONT_VERSION}.tgz` || !fontLock.integrity) fail(`package-lock.json must pin @bloxwap/font ${FONT_VERSION} from the npm registry`);
 
-// 3. Installed packages.
+// 2. Installed packages.
 const pkg = name => join(root, 'node_modules', name);
-for (const [name, version] of [['@bloxwap/hig-tokens', provenance.version], ['@bloxwap/font', FONT_VERSION]]) {
+for (const [name, version] of [['@bloxwap/hig-tokens', release.version], ['@bloxwap/font', FONT_VERSION]]) {
   if (!existsSync(join(pkg(name), 'package.json'))) fail(`${name} is not installed; run npm ci`);
   const installed = JSON.parse(readFileSync(join(pkg(name), 'package.json'))).version;
   if (installed !== version) fail(`${name} ${installed} is installed; expected ${version}. Run npm ci`);
 }
 
-// 4. Outputs.
+// 3. Outputs.
 const tokens = pkg('@bloxwap/hig-tokens'), font = pkg('@bloxwap/font');
 const FACES = [
   ['Bloxwap Sans', 'fonts/BloxwapSans/BloxwapSans-Variable.woff2'],
@@ -72,7 +66,7 @@ const outputs = new Map([
 ]);
 const manifest = {
   generatedBy: 'scripts/sync-hig.mjs',
-  hig: {commit: provenance.commit, version: provenance.version, tarball: `${vendor}/${tokensTarball}`, sha256: sums.get(tokensTarball)},
+  hig: {commit: release.commit, version: release.version, resolved: tokensLock.resolved, integrity: tokensLock.integrity},
   font: {package: '@bloxwap/font', version: FONT_VERSION, integrity: fontLock.integrity},
   files: Object.fromEntries([...outputs].map(([path, bytes]) => [path, {sha256: sha('sha256', bytes), bytes: bytes.length}])),
 };
@@ -85,5 +79,5 @@ for (const [path, bytes] of outputs) {
   mkdirSync(dirname(target), {recursive: true});
   writeFileSync(target, bytes);
 }
-if (stale.length) fail(`committed copies differ from the pinned packages (run npm run sync:hig):\n  ${stale.join('\n  ')}`);
-console.log(`sync-hig: ${check ? 'verified' : 'wrote'} ${outputs.size} files from @bloxwap/hig-tokens ${provenance.version} and @bloxwap/font ${FONT_VERSION}`);
+if (stale.length) fail(`generated files differ from the pinned packages (run npm run sync:hig):\n  ${stale.join('\n  ')}`);
+console.log(`sync-hig: ${check ? 'verified' : 'wrote'} ${outputs.size} files from @bloxwap/hig-tokens ${release.version} and @bloxwap/font ${FONT_VERSION}`);

@@ -1,6 +1,6 @@
 // Static checks for the HIG adoption (bloxwap/hig#61). Node built-ins only.
 //   - styles.css takes every colour, type, space, radius and motion value from a --hig-* role
-//     defined in the copied @bloxwap/hig-tokens CSS, and defines no custom properties of its own.
+//     defined in the generated @bloxwap/hig-tokens CSS, and defines no custom properties of its own.
 //   - every page loads the font, token and site stylesheets in that order, uses the approved mark
 //     and lockup, has a complete OG card, and links only to files that exist (or to the SDK sites).
 //   - the brand lockup is the supplied artwork, byte for byte.

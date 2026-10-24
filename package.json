@@ -13,11 +13,13 @@
     "drift": "node scripts/drift.mjs",
     "test:e2e": "playwright test",
     "og": "node scripts/og.mjs",
-    "evidence": "node scripts/evidence.mjs"
+    "evidence": "node scripts/evidence.mjs",
+    "build": "node scripts/sync-hig.mjs",
+    "predev": "npm run build"
   },
   "devDependencies": {
     "@bloxwap/font": "0.1.2",
-    "@bloxwap/hig-tokens": "file:vendor/bloxwap-hig/bloxwap-hig-tokens-0.1.0-candidate.sha872906a9.tgz",
+    "@bloxwap/hig-tokens": "0.1.0",
     "@playwright/test": "1.56.1"
   }
 }
