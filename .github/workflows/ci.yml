@@ -8,11 +8,13 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   site:
     runs-on: [self-hosted, macOS, ARM64]
+    # Security: never run fork PR code on the self-hosted runner.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     timeout-minutes: 15
     steps:
       # Job-level env cannot use the runner context (unrecognized named-value).
@@ -22,10 +24,12 @@ jobs:
           echo "TMPDIR=$RUNNER_TEMP" >> "$GITHUB_ENV"
           echo "PLAYWRIGHT_BROWSERS_PATH=$RUNNER_TEMP/ms-playwright" >> "$GITHUB_ENV"
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      # No cache: npm. GitHub's remote cache is ~883 MB and restore/save dominated
+      # Oct 17–20 job time (~217s p50, 717s on the first mini save). The minis
+      # already persist ~/.npm, and setup-node v4 has no package-manager-cache input.
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22.22.0'
-          cache: npm
       - run: npm ci
       # Checksummed HIG tarball, lockfile pins, committed token/font/mark copies, styles.css roles, pages, brand and OG card.
       - run: npm run check
@@ -47,3 +51,37 @@ jobs:
         with:
           name: playwright-results
           path: test-results/
+  deploy:
+    needs: site
+    runs-on: [self-hosted, macOS, ARM64]
+    # Publish only main pushes and manual main runs, never pull requests.
+    if: >-
+      ((github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main') &&
+      (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
+    steps:
+      - name: Use runner temp for scratch files
+        run: echo "TMPDIR=$RUNNER_TEMP" >> "$GITHUB_ENV"
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
+      - name: Prepare publish directory
+        run: |
+          mkdir -p "$RUNNER_TEMP/site"
+          rsync -a --delete --exclude='.git' --exclude='.github' --exclude='node_modules' --exclude='.hig' --exclude='test-results' --exclude='playwright-report' ./ "$RUNNER_TEMP/site/"
+          for path in .nojekyll 404.html og assets developers docs privacy robots.txt sitemap.xml llms.txt icon.svg lockup.svg styles.css; do
+            test -e "$RUNNER_TEMP/site/$path"
+          done
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
+        with:
+          path: ${{ runner.temp }}/site
+      - uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+        id: deployment
