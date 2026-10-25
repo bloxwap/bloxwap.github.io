@@ -7,6 +7,7 @@ Root GitHub Pages site for Bloxwap's open-source projects. GitHub Actions on the
 - [bloxwap/sfx](https://github.com/bloxwap/sfx) — interface sound effects, sound board and docs at https://bloxwap.github.io/sfx/
 - [bloxwap/haptic](https://github.com/bloxwap/haptic) — haptic feedback for React, docs at https://bloxwap.github.io/haptic/
 - [bloxwap/font](https://github.com/bloxwap/font) — Sans, Mono, and Pixel typefaces, type tester and docs at https://bloxwap.github.io/font/
+- [bloxwap/screensaver](https://github.com/bloxwap/screensaver) — Bitcoin, Solana, Ethereum, and Hyperliquid screensavers for Mac, Windows, and Linux, with downloads and live browser previews at https://bloxwap.github.io/screensaver/
 
 ## Design system
 

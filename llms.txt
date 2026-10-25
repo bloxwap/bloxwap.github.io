@@ -80,6 +80,8 @@ code { font-family: "Bloxwap Mono", ui-monospace, monospace; }
 - [Font type tester](https://bloxwap.github.io/font/): Try the Sans, Mono, and Pixel typefaces.
 - [Font documentation](https://bloxwap.github.io/font/docs/): Installation, font families, and multilingual support.
 - [Font source code](https://github.com/bloxwap/font): SIL Open Font License 1.1 repository and issue tracker.
+- [Screensaver downloads and previews](https://bloxwap.github.io/screensaver/): Live Bitcoin, Solana, Ethereum, and Hyperliquid screensavers for Mac, Windows, and Linux, with previews that run in the browser.
+- [Screensaver source code](https://github.com/bloxwap/screensaver): Desktop app, website, build workflows, and issue tracker.
 
 ## Company
 

@@ -75,6 +75,7 @@ for (const [, body] of css.matchAll(/\{([^{}]*)\}/g)) {
 const tracked = execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard'], {cwd: root, encoding: 'utf8'}).split('\n').filter(Boolean);
 const pages = tracked.filter(path => path.endsWith('.html') && !path.startsWith('node_modules/') && !path.startsWith('scripts/') && !path.startsWith('tests/'));
 const SDK_SITES = ['/chart/', '/hyperliquid/', '/sfx/', '/haptic/', '/font/']; // separate Pages repositories on this origin
+const PROJECT_SITES = [...SDK_SITES, '/screensaver/'];
 const STYLESHEETS = ['/assets/font/bloxwap-font.css', '/assets/hig/tokens.css', '/styles.css'];
 const exists = path => { const target = join(root, path); return existsSync(target) && (statSync(target).isFile() || existsSync(join(target, 'index.html'))); };
 
@@ -92,13 +93,13 @@ for (const page of pages) {
     if (!html.includes('<meta name="twitter:card" content="summary_large_image" />')) error(`${page}: missing twitter:card`);
   }
   for (const [, url] of html.matchAll(/\s(?:href|src)="(\/[^"#?]*)/g)) {
-    if (SDK_SITES.some(prefix => url.startsWith(prefix))) continue;
+    if (PROJECT_SITES.some(prefix => url.startsWith(prefix))) continue;
     if (!exists(url)) error(`${page}: ${url} does not exist in this repository`);
   }
 }
-for (const [page, required] of [['index.html', SDK_SITES], ['developers/index.html', SDK_SITES]]) {
+for (const [page, required] of [['index.html', PROJECT_SITES], ['developers/index.html', SDK_SITES]]) {
   const html = read(page);
-  for (const site of required) if (!html.includes(`href="${site}`)) error(`${page}: no link to the ${site} SDK docs site`);
+  for (const site of required) if (!html.includes(`href="${site}`)) error(`${page}: no link to the ${site} project site`);
 }
 
 // ---- brand and OG assets --------------------------------------------------------------------
