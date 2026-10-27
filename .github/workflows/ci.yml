@@ -14,7 +14,7 @@ jobs:
   security:
     # Release scan, parallel with site. Skipped on PRs.
     if: github.event_name != 'pull_request'
-    uses: bloxwap/.github/.github/workflows/security-scan.yml@6755bcc6a591531ae95a5babfa389c329f71ba0b # v1.0.2
+    uses: bloxwap/.github/.github/workflows/security-scan.yml@2a70724cd0d803abef5f5a7c64c46065f4fda19b # v1.1.0
     permissions:
       contents: read
     with:
@@ -37,6 +37,8 @@ jobs:
           echo "TMPDIR=$RUNNER_TEMP" >> "$GITHUB_ENV"
           echo "PLAYWRIGHT_BROWSERS_PATH=$RUNNER_TEMP/ms-playwright" >> "$GITHUB_ENV"
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
       # No cache: npm. GitHub's remote cache is ~883 MB and restore/save dominated
       # Oct 17–20 job time (~217s p50, 717s on the first mini save). The minis
       # already persist ~/.npm, and setup-node v4 has no package-manager-cache input.
