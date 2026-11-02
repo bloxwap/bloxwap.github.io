@@ -35,20 +35,20 @@ jobs:
       - name: Use runner temp for scratch files
         run: |
           echo "TMPDIR=$RUNNER_TEMP" >> "$GITHUB_ENV"
-          echo "PLAYWRIGHT_BROWSERS_PATH=$RUNNER_TEMP/ms-playwright" >> "$GITHUB_ENV"
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           persist-credentials: false
-      # No cache: npm. GitHub's remote cache is ~883 MB and restore/save dominated
-      # Oct 17–20 job time (~217s p50, 717s on the first mini save). The minis
-      # already persist ~/.npm, and setup-node v4 has no package-manager-cache input.
+      # Keep Node for the existing scripts; Bun uses its local on-disk cache.
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22.22.0'
-      - run: npm ci
-      - run: npm run build
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: '1.4.2'
+      - run: bun install --frozen-lockfile
+      - run: bun run build
       # Registry integrity, generated token/font/mark assets, styles.css roles, pages, brand and OG card.
-      - run: npm run check
+      - run: bun run check
       # Scoped drift check from the exact published HIG source commit.
       - id: hig
         run: echo "commit=$(node -p "require('./docs/hig-release.json').commit")" >> "$GITHUB_OUTPUT"
@@ -58,10 +58,10 @@ jobs:
           ref: ${{ steps.hig.outputs.commit }}
           path: .hig
           persist-credentials: false
-      - run: npm run drift
-      # Chromium only; no --with-deps (that flag installs apt packages on Linux).
-      - run: npx playwright install chromium
-      - run: npm run test:e2e
+      - run: bun run drift
+      # Reuse ~/Library/Caches/ms-playwright on the minis; no --with-deps.
+      - run: bunx playwright install chromium
+      - run: bun run test:e2e
       - name: Prepare tested publish directory
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |

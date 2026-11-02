@@ -1,0 +1,27 @@
+{
+  "lockfileVersion": 2,
+  "configVersion": 0,
+  "workspaces": {
+    "": {
+      "name": "bloxwap.github.io",
+      "devDependencies": {
+        "@bloxwap/font": "0.1.2",
+        "@bloxwap/hig-tokens": "0.1.0",
+        "@playwright/test": "1.56.1",
+      },
+    },
+  },
+  "packages": {
+    "@bloxwap/font": ["@bloxwap/font@0.1.2", "", { "peerDependencies": { "next": ">=15.0.0" }, "optionalPeers": ["next"] }, "sha512-3aWepyHUKhbRtpIZxYYN4ixY703YsKXcfgsRQR1BjiH8hkvahm/xfCkzFhb8fKoN6g1y6vTSb9FA5HCxJ9O0uQ=="],
+
+    "@bloxwap/hig-tokens": ["@bloxwap/hig-tokens@0.1.0", "", {}, "sha512-udpntFJd+V056S9CtBYQWFKY++me1h7fTTXfwq+ivyfDIveZrUW4tE10fghAtmDPz2m6jzOzMRCm/Cg5lw09GA=="],
+
+    "@playwright/test": ["@playwright/test@1.56.1", "", { "dependencies": { "playwright": "1.56.1" }, "bin": { "playwright": "cli.js" } }, "sha512-vSMYtL/zOcFpvJCW71Q/OEGQb7KYBPAdKh35WNSkaZA75JlAO8ED8UN6GUNTm3drWomcbcqRPFqQbLae8yBTdg=="],
+
+    "fsevents": ["fsevents@2.3.2", "", { "os": "darwin" }, "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="],
+
+    "playwright": ["playwright@1.56.1", "", { "dependencies": { "playwright-core": "1.56.1" }, "optionalDependencies": { "fsevents": "2.3.2" }, "bin": "cli.js" }, "sha512-aFi5B0WovBHTEvpM3DzXTUaeN6eN0qWnTkKx4NQaH4Wvcmc153PdaY2UBdSYKaGYw+UyWXSVyxDUg5DoPEttjw=="],
+
+    "playwright-core": ["playwright-core@1.56.1", "", { "bin": "cli.js" }, "sha512-hutraynyn31F+Bifme+Ps9Vq59hKuUCz7H1kDOcBs+2oGguKkWTU50bBWrtz34OUWmIwpBTWDxaRPXrIXkgvmQ=="],
+  }
+}
