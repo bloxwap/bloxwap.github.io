@@ -2,7 +2,7 @@
 import {expect, test} from '@playwright/test';
 
 const PAGES = [['/', 200], ['/developers/', 200], ['/privacy/', 200], ['/no-such-page/', 404]];
-const SDK_SITES = ['/chart/', '/hyperliquid/', '/sfx/', '/haptic/', '/font/'];
+const SDK_SITES = ['/chart/', '/hyperliquid/', '/agent-cli/', '/smart-solana/', '/smart-hyperevm/', '/hig/', '/sfx/', '/haptic/', '/font/'];
 
 /** Resolves a HIG role to the computed colour the browser paints. */
 const role = (page, name) => page.evaluate(name => {
@@ -109,12 +109,12 @@ for (const [path, status] of PAGES) {
 
 test('home links to every open-source project site', async ({page}) => {
   await page.goto('/');
-  for (const site of [...SDK_SITES, '/agent-cli/', '/smart-solana/', '/smart-hyperevm/', '/hig/', '/screensaver/']) await expect(page.locator(`main a.card[href="${site}"]`)).toHaveCount(1);
+  for (const site of [...SDK_SITES, '/screensaver/']) await expect(page.locator(`main a.card[href="${site}"]`)).toHaveCount(1);
 });
 
-test('developer portal covers the five SDKs', async ({page}) => {
+test('developer portal covers every SDK', async ({page}) => {
   await page.goto('/developers/');
-  for (const name of ['Chart SDK', 'Hyperliquid SDK', 'SFX', 'Haptic', 'Font']) await expect(page.locator('main h2', {hasText: new RegExp(`^${name}$`)})).toHaveCount(1);
+  for (const name of ['Chart SDK', 'Hyperliquid SDK', 'Agent CLI', 'Smart Solana', 'Smart HyperEVM', 'HIG', 'SFX', 'Haptic', 'Font']) await expect(page.locator('main h2', {hasText: new RegExp(`^${name}$`)})).toHaveCount(1);
   for (const site of SDK_SITES) expect(await page.locator(`main a[href^="${site}"]`).count()).toBeGreaterThanOrEqual(2);
 });
 

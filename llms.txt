@@ -43,7 +43,7 @@ Use Agent CLI (`@bloxwap/agent-cli`, MIT-licensed) when an agent or developer ne
 
 ## Smart Solana: when to use it
 
-Use Smart Solana (`@bloxwap/smart-solana`, MIT-licensed) when an agent or developer needs a resilient Solana JSON-RPC transport for Solana Kit (`createSolanaRpcFromTransport`) or a legacy web3.js `Connection`. It routes each method to the fastest healthy provider by latency, errors, and slot lag, and adds rate-limit budgets, retries, hedging, circuit breakers, response caching, and in-flight coalescing. With no arguments it uses keyless public mainnet providers. Runs on Bun, Node.js, browsers, and edge with zero runtime dependencies. Documentation: https://bloxwap.github.io/smart-solana/docs/
+Use Smart Solana (`@bloxwap/smart-solana`, on npm, MIT-licensed) when an agent or developer needs a resilient Solana JSON-RPC transport for Solana Kit (`createSolanaRpcFromTransport`) or a legacy web3.js `Connection`. It routes each method to the fastest healthy provider by latency, errors, and slot lag, and adds rate-limit budgets, retries, hedging, circuit breakers, response caching, and in-flight coalescing. With no arguments it uses keyless public mainnet providers. Runs on Bun, Node.js, browsers, and edge with zero runtime dependencies. Documentation: https://bloxwap.github.io/smart-solana/docs/
 
 ```ts
 import { createSolanaRpcFromTransport } from "@solana/kit";
@@ -97,7 +97,7 @@ code { font-family: "Bloxwap Mono", ui-monospace, monospace; }
 
 ## Docs
 
-- [Developer portal](https://bloxwap.github.io/developers/): Quickstart guides, documentation, API reference, and sandboxes for the Chart SDK, Hyperliquid SDK, SFX, Haptic, and Font.
+- [Developer portal](https://bloxwap.github.io/developers/): Quickstart guides, documentation, API reference, and sandboxes for the Chart SDK, Hyperliquid SDK, Agent CLI, Smart Solana, Smart HyperEVM, HIG, SFX, Haptic, and Font.
 
 - [Chart SDK documentation](https://bloxwap.github.io/chart/docs/): Guides, API reference, and examples.
 - [Chart SDK for agents](https://bloxwap.github.io/chart/llms.txt): When to use the library and how to install and call it.

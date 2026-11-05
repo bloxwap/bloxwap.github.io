@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Developers — Bloxwap on GitHub</title>
-  <meta name="description" content="The Bloxwap developer portal: quickstart guides, documentation, API reference, and an interactive sandbox for the Bloxwap Chart SDK, Hyperliquid SDK, SFX sound library, Haptic feedback library, and Bloxwap Font." />
+  <meta name="description" content="The Bloxwap developer portal: quickstart guides, documentation, API reference, and an interactive sandbox for the Bloxwap Chart SDK, Hyperliquid SDK, Agent CLI, Smart Solana, Smart HyperEVM, Bloxwap HIG, SFX, Haptic, and Bloxwap Font." />
   <link rel="canonical" href="https://bloxwap.github.io/developers/" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
   <link rel="preload" href="/assets/font/BloxwapSans-Variable.woff2" as="font" type="font/woff2" crossorigin />
@@ -14,7 +14,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Bloxwap on GitHub" />
   <meta property="og:title" content="Developers — Bloxwap on GitHub" />
-  <meta property="og:description" content="Quickstart guides, documentation, and API reference for the Bloxwap Chart SDK, Hyperliquid SDK, SFX, Haptic, and Bloxwap Font." />
+  <meta property="og:description" content="Quickstart guides, documentation, and API reference for the Bloxwap Chart SDK, Hyperliquid SDK, Agent CLI, Smart Solana, Smart HyperEVM, HIG, SFX, Haptic, and Bloxwap Font." />
   <meta property="og:url" content="https://bloxwap.github.io/developers/" />
   <meta property="og:image" content="https://bloxwap.github.io/og/home.png" />
   <meta property="og:image:width" content="1200" />
@@ -62,6 +62,42 @@
       <a class="card" href="/hyperliquid/docs/guides/"><h3>Guides</h3><p>Market orders, agent wallets and vaults, browser wallets, and smaller bundles.</p></a>
     </div>
 
+    <h2>Agent CLI</h2>
+    <p><code>@bloxwap/agent-cli</code> is an agent-native Hyperliquid trading CLI with JSON input and output, a persistent signing runner, Relay funding, and paper trading against live mainnet market data. Master custody stays in your own wallet. Install it with <code>npm i -g @bloxwap/agent-cli</code>.</p>
+    <div class="cards">
+      <a class="card" href="/agent-cli/docs/quickstart/"><h3>Quickstart</h3><p>Initialize a testnet agent, approve it from your wallet, fund it, and start the runner.</p></a>
+      <a class="card" href="/agent-cli/docs/paper/"><h3>Paper trading</h3><p>Run every command against real mainnet market data without signing or submitting anything.</p></a>
+      <a class="card" href="/agent-cli/docs/commands/"><h3>Command reference</h3><p>Every command, its JSON input, and its output.</p></a>
+      <a class="card" href="/agent-cli/docs/custody/"><h3>Custody</h3><p>User-owned Privy apps, dedicated EOA agents, local credentials, and wallet trust boundaries.</p></a>
+    </div>
+
+    <h2>Smart Solana</h2>
+    <p><code>@bloxwap/smart-solana</code> is an adaptive Solana JSON-RPC transport for Solana Kit and web3.js. It routes by measured provider latency and errors, fails over when providers throttle or time out, and answers repeated reads from a local cache. Install it with <code>npm i @bloxwap/smart-solana @solana/kit</code>.</p>
+    <div class="cards">
+      <a class="card" href="/smart-solana/docs/"><h3>Quickstart</h3><p>Install the transport and create a Solana Kit client in a few lines.</p></a>
+      <a class="card" href="/smart-solana/docs/configuration/"><h3>Configuration</h3><p>Your own endpoints, rate-limit budgets, timeouts, and hedging.</p></a>
+      <a class="card" href="/smart-solana/docs/routing/"><h3>Routing and caching</h3><p>How providers are scored by latency, errors, and slot lag, and when reads come from cache.</p></a>
+      <a class="card" href="/smart-solana/docs/api/"><h3>API reference</h3><p>Every export, option, and public type.</p></a>
+    </div>
+
+    <h2>Smart HyperEVM</h2>
+    <p><code>@bloxwap/smart-hyperevm</code> is a drop-in viem transport for HyperEVM. It ranks RPC endpoints by live latency, errors, congestion, and block-head lag, races the best candidates, and answers recent reads from a local cache. Install it with <code>npm i @bloxwap/smart-hyperevm</code>.</p>
+    <div class="cards">
+      <a class="card" href="/smart-hyperevm/docs/"><h3>Quickstart</h3><p>Install the transport and create a viem client for HyperEVM.</p></a>
+      <a class="card" href="/smart-hyperevm/docs/configuration/"><h3>Configuration</h3><p>Public URLs, keyed provider URLs, existing viem transports, timeouts, and hedging.</p></a>
+      <a class="card" href="/smart-hyperevm/docs/routing/"><h3>Routing and caching</h3><p>How the transport and the registry ranker choose endpoints, and when reads come from cache.</p></a>
+      <a class="card" href="/smart-hyperevm/docs/api/"><h3>API reference</h3><p>Every export, option, and public type.</p></a>
+    </div>
+
+    <h2>HIG</h2>
+    <p><code>@bloxwap/hig</code> is Bloxwap's Human Interface Guidelines: design tokens, platform-neutral contracts, React and React Native components, and a chart adapter, all as subpath exports of one package. Install it with <code>npm i @bloxwap/hig</code>.</p>
+    <div class="cards">
+      <a class="card" href="/hig/docs/guides/installation/"><h3>Installation</h3><p>The package's subpath exports and the peers each one needs.</p></a>
+      <a class="card" href="/hig/docs/catalog/"><h3>Component catalog</h3><p>Actions, fields, selection, navigation, overlays, status, and financial data on web and native.</p></a>
+      <a class="card" href="/hig/docs/guides/foundations/principles/"><h3>Principles</h3><p>Action hierarchy, content, and the rules every Bloxwap surface follows.</p></a>
+      <a class="card" href="/hig/docs/"><h3>Documentation</h3><p>Foundations, components, feedback, governance, and migration guides.</p></a>
+    </div>
+
     <h2>SFX</h2>
     <p><code>@bloxwap/sfx</code> is an interface sound-effects library for the web: 19 sounds for hovers, presses, toggles, confirmations, and money moments, synthesized with Web Audio — no audio files, zero dependencies. Install it with <code>npm i @bloxwap/sfx</code>.</p>
     <div class="cards">
@@ -90,13 +126,13 @@
     </div>
 
     <h2>Access and API keys</h2>
-    <p>All five projects are keyless: there are no API keys, accounts, rate limits, or usage fees to manage. The Chart SDK runs entirely in your application — build it from <a href="https://github.com/bloxwap/chart">source</a> and ship it with your app. The Hyperliquid SDK talks directly to Hyperliquid's public API from your own code, and trading signs with your own wallet, never a Bloxwap account. SFX synthesizes every sound locally in the browser with Web Audio, Haptic runs on the device, and Bloxwap Font is a set of files you host yourself.</p>
+    <p>None of these projects needs a Bloxwap account, API key, or usage fee. The Chart SDK runs entirely in your application — build it from <a href="https://github.com/bloxwap/chart">source</a> and ship it with your app. The Hyperliquid SDK talks directly to Hyperliquid's public API from your own code, and trading signs with your own wallet, never a Bloxwap account. Agent CLI signs with your own Privy app or a dedicated EOA agent key that you keep outside the CLI; it ships no shared credentials or hosted signer, and paper trading needs no credentials at all. Smart Solana and Smart HyperEVM default to keyless public RPC providers, and you can add your own provider URLs. SFX synthesizes every sound locally in the browser with Web Audio, Haptic runs on the device, and HIG and Bloxwap Font are packages and files you ship yourself.</p>
 
     <h2>For AI agents</h2>
-    <p>Machine-readable summaries of when and how to use each project are at <a href="/llms.txt">/llms.txt</a>, <a href="/chart/llms.txt">/chart/llms.txt</a>, <a href="/hyperliquid/llms.txt">/hyperliquid/llms.txt</a>, <a href="/sfx/llms.txt">/sfx/llms.txt</a>, and <a href="/font/llms.txt">/font/llms.txt</a>. Every page is listed in the <a href="/sitemap.xml">sitemap</a>.</p>
+    <p>Machine-readable summaries of when and how to use each project are at <a href="/llms.txt">/llms.txt</a>, <a href="/chart/llms.txt">/chart/llms.txt</a>, <a href="/hyperliquid/llms.txt">/hyperliquid/llms.txt</a>, <a href="/agent-cli/llms.txt">/agent-cli/llms.txt</a>, <a href="/hig/llms.txt">/hig/llms.txt</a>, <a href="/sfx/llms.txt">/sfx/llms.txt</a>, and <a href="/font/llms.txt">/font/llms.txt</a>. Every page is listed in the <a href="/sitemap.xml">sitemap</a>.</p>
 
     <h2>Support</h2>
-    <p>Report bugs and ask questions in GitHub issues for the <a href="https://github.com/bloxwap/chart/issues">Chart SDK</a>, <a href="https://github.com/bloxwap/hyperliquid/issues">Hyperliquid SDK</a>, <a href="https://github.com/bloxwap/sfx/issues">SFX</a>, <a href="https://github.com/bloxwap/haptic/issues">Haptic</a>, or <a href="https://github.com/bloxwap/font/issues">Font</a>, or email <a href="mailto:support@bloxwap.com">support@bloxwap.com</a>.</p>
+    <p>Report bugs and ask questions in GitHub issues for the <a href="https://github.com/bloxwap/chart/issues">Chart SDK</a>, <a href="https://github.com/bloxwap/hyperliquid/issues">Hyperliquid SDK</a>, <a href="https://github.com/bloxwap/agent-cli/issues">Agent CLI</a>, <a href="https://github.com/bloxwap/smart-solana/issues">Smart Solana</a>, <a href="https://github.com/bloxwap/smart-hyperevm/issues">Smart HyperEVM</a>, <a href="https://github.com/bloxwap/hig/issues">HIG</a>, <a href="https://github.com/bloxwap/sfx/issues">SFX</a>, <a href="https://github.com/bloxwap/haptic/issues">Haptic</a>, or <a href="https://github.com/bloxwap/font/issues">Font</a>, or email <a href="mailto:support@bloxwap.com">support@bloxwap.com</a>.</p>
   </main>
   <footer>
     <div class="footer-grid">

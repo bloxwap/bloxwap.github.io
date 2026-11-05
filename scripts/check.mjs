@@ -74,8 +74,8 @@ for (const [, body] of css.matchAll(/\{([^{}]*)\}/g)) {
 // ---- pages --------------------------------------------------------------------------------------
 const tracked = execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard'], {cwd: root, encoding: 'utf8'}).split('\n').filter(Boolean);
 const pages = tracked.filter(path => path.endsWith('.html') && !path.startsWith('node_modules/') && !path.startsWith('scripts/') && !path.startsWith('tests/'));
-const SDK_SITES = ['/chart/', '/hyperliquid/', '/sfx/', '/haptic/', '/font/']; // separate Pages repositories on this origin
-const PROJECT_SITES = [...SDK_SITES, '/agent-cli/', '/smart-solana/', '/smart-hyperevm/', '/hig/', '/screensaver/'];
+const SDK_SITES = ['/chart/', '/hyperliquid/', '/agent-cli/', '/smart-solana/', '/smart-hyperevm/', '/hig/', '/sfx/', '/haptic/', '/font/']; // separate Pages repositories on this origin
+const PROJECT_SITES = [...SDK_SITES, '/screensaver/'];
 const STYLESHEETS = ['/assets/font/bloxwap-font.css', '/assets/hig/tokens.css', '/styles.css'];
 const exists = path => { const target = join(root, path); return existsSync(target) && (statSync(target).isFile() || existsSync(join(target, 'index.html'))); };
 
