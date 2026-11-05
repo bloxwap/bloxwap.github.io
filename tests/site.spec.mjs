@@ -107,10 +107,9 @@ for (const [path, status] of PAGES) {
   });
 }
 
-test('home links to the five SDK docs sites and Screensaver', async ({page}) => {
+test('home links to every open-source project site', async ({page}) => {
   await page.goto('/');
-  for (const site of SDK_SITES) await expect(page.locator(`main a.card[href="${site}"]`)).toHaveCount(1);
-  await expect(page.locator('main a.card[href="/screensaver/"]')).toHaveCount(1);
+  for (const site of [...SDK_SITES, '/agent-cli/', '/smart-solana/', '/smart-hyperevm/', '/hig/', '/screensaver/']) await expect(page.locator(`main a.card[href="${site}"]`)).toHaveCount(1);
 });
 
 test('developer portal covers the five SDKs', async ({page}) => {

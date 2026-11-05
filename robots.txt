@@ -21,3 +21,11 @@ Allow: /
 Sitemap: https://bloxwap.github.io/sitemap.xml
 Sitemap: https://bloxwap.github.io/chart/sitemap.xml
 Sitemap: https://bloxwap.github.io/hyperliquid/sitemap.xml
+Sitemap: https://bloxwap.github.io/agent-cli/sitemap.xml
+Sitemap: https://bloxwap.github.io/smart-solana/sitemap.xml
+Sitemap: https://bloxwap.github.io/smart-hyperevm/sitemap.xml
+Sitemap: https://bloxwap.github.io/hig/sitemap.xml
+Sitemap: https://bloxwap.github.io/sfx/sitemap.xml
+Sitemap: https://bloxwap.github.io/haptic/sitemap.xml
+Sitemap: https://bloxwap.github.io/font/sitemap.xml
+Sitemap: https://bloxwap.github.io/screensaver/sitemap.xml
