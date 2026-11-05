@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://bloxwap.github.io/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://bloxwap.github.io/</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://bloxwap.github.io/developers/</loc><lastmod>2026-10-15</lastmod></url>
   <url><loc>https://bloxwap.github.io/privacy/</loc><lastmod>2026-10-15</lastmod></url>
   <url><loc>https://bloxwap.github.io/chart/</loc><lastmod>2026-09-26</lastmod></url>
@@ -52,4 +52,28 @@
   <url><loc>https://bloxwap.github.io/font/docs/</loc><lastmod>2026-10-02</lastmod></url>
   <url><loc>https://bloxwap.github.io/font/docs/installation/</loc><lastmod>2026-10-02</lastmod></url>
   <url><loc>https://bloxwap.github.io/screensaver/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://bloxwap.github.io/agent-cli/</loc></url>
+  <url><loc>https://bloxwap.github.io/smart-solana/</loc></url>
+  <url><loc>https://bloxwap.github.io/smart-solana/docs/</loc></url>
+  <url><loc>https://bloxwap.github.io/smart-solana/docs/api/</loc></url>
+  <url><loc>https://bloxwap.github.io/smart-solana/docs/benchmarks/</loc></url>
+  <url><loc>https://bloxwap.github.io/smart-solana/docs/configuration/</loc></url>
+  <url><loc>https://bloxwap.github.io/smart-solana/docs/routing/</loc></url>
+  <url><loc>https://bloxwap.github.io/smart-hyperevm/</loc></url>
+  <url><loc>https://bloxwap.github.io/smart-hyperevm/docs/</loc></url>
+  <url><loc>https://bloxwap.github.io/smart-hyperevm/docs/api/</loc></url>
+  <url><loc>https://bloxwap.github.io/smart-hyperevm/docs/benchmarks/</loc></url>
+  <url><loc>https://bloxwap.github.io/smart-hyperevm/docs/configuration/</loc></url>
+  <url><loc>https://bloxwap.github.io/smart-hyperevm/docs/routing/</loc></url>
+  <url><loc>https://bloxwap.github.io/hig/</loc></url>
+  <url><loc>https://bloxwap.github.io/hig/docs/</loc></url>
+  <url><loc>https://bloxwap.github.io/hig/docs/guides/installation/</loc></url>
+  <url><loc>https://bloxwap.github.io/screensaver/docs/</loc></url>
+  <url><loc>https://bloxwap.github.io/screensaver/docs/installation/</loc></url>
+  <url><loc>https://bloxwap.github.io/screensaver/docs/settings/</loc></url>
+  <url><loc>https://bloxwap.github.io/screensaver/docs/data-and-display/</loc></url>
+  <url><loc>https://bloxwap.github.io/screensaver/docs/preview/</loc></url>
+  <url><loc>https://bloxwap.github.io/screensaver/docs/troubleshooting/</loc></url>
+  <url><loc>https://bloxwap.github.io/screensaver/docs/development/</loc></url>
+  <url><loc>https://bloxwap.github.io/screensaver/docs/releasing/</loc></url>
 </urlset>

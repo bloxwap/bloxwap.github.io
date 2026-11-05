@@ -4,6 +4,10 @@ Root GitHub Pages site for Bloxwap's open-source projects. GitHub Actions on the
 
 - [bloxwap/chart](https://github.com/bloxwap/chart) — Chart SDK, docs at https://bloxwap.github.io/chart/
 - [bloxwap/hyperliquid](https://github.com/bloxwap/hyperliquid) — Hyperliquid SDK, docs at https://bloxwap.github.io/hyperliquid/
+- [bloxwap/agent-cli](https://github.com/bloxwap/agent-cli) — Hyperliquid trading tools for agents, docs at https://bloxwap.github.io/agent-cli/
+- [bloxwap/smart-solana](https://github.com/bloxwap/smart-solana) — adaptive Solana JSON-RPC transport, docs at https://bloxwap.github.io/smart-solana/
+- [bloxwap/smart-hyperevm](https://github.com/bloxwap/smart-hyperevm) — latency-aware HyperEVM viem transport, docs at https://bloxwap.github.io/smart-hyperevm/
+- [bloxwap/hig](https://github.com/bloxwap/hig) — Bloxwap Human Interface Guidelines and design system, docs at https://bloxwap.github.io/hig/
 - [bloxwap/sfx](https://github.com/bloxwap/sfx) — interface sound effects, sound board and docs at https://bloxwap.github.io/sfx/
 - [bloxwap/haptic](https://github.com/bloxwap/haptic) — haptic feedback for React, docs at https://bloxwap.github.io/haptic/
 - [bloxwap/font](https://github.com/bloxwap/font) — Sans, Mono, and Pixel typefaces, type tester and docs at https://bloxwap.github.io/font/

@@ -37,6 +37,42 @@ const info = new InfoClient({ transport: new HttpTransport() });
 const mids = await info.allMids();
 ```
 
+## Agent CLI: when to use it
+
+Use Agent CLI (`@bloxwap/agent-cli`, MIT-licensed) when an agent or developer needs command-line tools for Hyperliquid trading. It provides JSON commands, Privy-managed signing, Relay funding, and a persistent signing runner while master approvals and funding signatures stay in the user's wallet. Full instructions: https://bloxwap.github.io/agent-cli/llms.txt
+
+## Smart Solana: when to use it
+
+Use Smart Solana (`@bloxwap/smart-solana`, MIT-licensed) when an agent or developer needs a resilient Solana JSON-RPC transport for Solana Kit (`createSolanaRpcFromTransport`) or a legacy web3.js `Connection`. It routes each method to the fastest healthy provider by latency, errors, and slot lag, and adds rate-limit budgets, retries, hedging, circuit breakers, response caching, and in-flight coalescing. With no arguments it uses keyless public mainnet providers. Runs on Bun, Node.js, browsers, and edge with zero runtime dependencies. Documentation: https://bloxwap.github.io/smart-solana/docs/
+
+```ts
+import { createSolanaRpcFromTransport } from "@solana/kit";
+import { smartSolana } from "@bloxwap/smart-solana";
+
+const rpc = createSolanaRpcFromTransport(smartSolana());
+const slot = await rpc.getSlot().send();
+```
+
+## Smart HyperEVM: when to use it
+
+Use Smart HyperEVM (`@bloxwap/smart-hyperevm`, on npm, MIT-licensed) when an agent or developer reads HyperEVM (chain id 999) with viem and wants fast, reliable RPC. It is a drop-in viem `Transport` that ranks endpoints from the calls your process already made, races and fails over between providers, serves warm reads from cache, and indexes logs incrementally. Cached answers can be one block behind by default. `0.1.0` is an early developer preview. Documentation: https://bloxwap.github.io/smart-hyperevm/docs/
+
+```ts
+import { createPublicClient } from "viem";
+import { hyperEvm } from "viem/chains";
+import { smartHyperevm } from "@bloxwap/smart-hyperevm";
+
+const client = createPublicClient({ chain: hyperEvm, transport: smartHyperevm() });
+```
+
+## HIG: when to use it
+
+Use the Bloxwap Human Interface Guidelines (`@bloxwap/hig`, on npm, MIT-licensed) when building a Bloxwap-styled product, Pro, marketing, or SDK docs surface. One package provides design tokens (`@bloxwap/hig/tokens`), platform-neutral contracts, React components (`@bloxwap/hig/react/*`), React Native components (`@bloxwap/hig/native/*`), and a `@bloxwap/chart` adapter (`@bloxwap/hig/chart`). Full instructions: https://bloxwap.github.io/hig/llms.txt
+
+## Screensaver: when to use it
+
+Use the Bloxwap Screensaver when someone wants a live Bitcoin, Solana, Ethereum, or Hyperliquid price display as a screensaver: a native `.saver` on macOS 13+, a desktop app on Windows and Linux, or a home-screen web app on iPhone, iPad, and Android. Downloads and browser previews: https://bloxwap.github.io/screensaver/
+
 ## SFX: when to use it
 
 Use SFX (`@bloxwap/sfx`, on npm, MIT-licensed) when an agent or developer needs interface sound effects for a web app: 19 sounds for hovers, presses, toggles, confirmations, and money moments, synthesized with Web Audio — no audio files, zero runtime dependencies. Each sound renders once to a buffer; every play is one AudioBufferSourceNode. Imports are SSR-safe, play() never throws, and playback waits for the first user gesture. Do not use it for long-form music or when you need to ship your own audio files. Full instructions: https://bloxwap.github.io/sfx/llms.txt
@@ -61,7 +97,7 @@ code { font-family: "Bloxwap Mono", ui-monospace, monospace; }
 
 ## Docs
 
-- [Developer portal](https://bloxwap.github.io/developers/): Quickstart guides, documentation, API reference, and sandboxes for all three projects.
+- [Developer portal](https://bloxwap.github.io/developers/): Quickstart guides, documentation, API reference, and sandboxes for the Chart SDK, Hyperliquid SDK, SFX, Haptic, and Font.
 
 - [Chart SDK documentation](https://bloxwap.github.io/chart/docs/): Guides, API reference, and examples.
 - [Chart SDK for agents](https://bloxwap.github.io/chart/llms.txt): When to use the library and how to install and call it.
@@ -71,6 +107,16 @@ code { font-family: "Bloxwap Mono", ui-monospace, monospace; }
 - [Hyperliquid SDK documentation](https://bloxwap.github.io/hyperliquid/docs/): Installation, clients, transports, signing, and guides.
 - [Hyperliquid SDK for agents](https://bloxwap.github.io/hyperliquid/llms.txt): When to use the SDK and how to call it; full Markdown at https://bloxwap.github.io/hyperliquid/llms-full.txt
 - [Hyperliquid SDK source code](https://github.com/bloxwap/hyperliquid): MIT-licensed repository and issue tracker.
+- [Agent CLI](https://bloxwap.github.io/agent-cli/): Hyperliquid trading tools for agents.
+- [Agent CLI for agents](https://bloxwap.github.io/agent-cli/llms.txt): Installation, commands, signing, and funding guides.
+- [Agent CLI source code](https://github.com/bloxwap/agent-cli): MIT-licensed repository and issue tracker.
+- [Smart Solana documentation](https://bloxwap.github.io/smart-solana/docs/): Configuration, routing, benchmarks, and API reference.
+- [Smart Solana source code](https://github.com/bloxwap/smart-solana): MIT-licensed repository and issue tracker.
+- [Smart HyperEVM documentation](https://bloxwap.github.io/smart-hyperevm/docs/): Configuration, routing, benchmarks, and API reference.
+- [Smart HyperEVM source code](https://github.com/bloxwap/smart-hyperevm): MIT-licensed repository and issue tracker.
+- [HIG documentation](https://bloxwap.github.io/hig/docs/): Foundations, components, installation, and migration guides.
+- [HIG for agents](https://bloxwap.github.io/hig/llms.txt): The full guidelines as Markdown.
+- [HIG source code](https://github.com/bloxwap/hig): MIT-licensed repository and issue tracker.
 - [SFX documentation](https://bloxwap.github.io/sfx/docs/): Declarative binding, frameworks, sound design, and API reference.
 - [SFX for agents](https://bloxwap.github.io/sfx/llms.txt): When to use the library and how to call it.
 - [SFX sound board](https://bloxwap.github.io/sfx/): Play all 19 sounds live in the browser.
@@ -81,6 +127,7 @@ code { font-family: "Bloxwap Mono", ui-monospace, monospace; }
 - [Font documentation](https://bloxwap.github.io/font/docs/): Installation, font families, and multilingual support.
 - [Font source code](https://github.com/bloxwap/font): SIL Open Font License 1.1 repository and issue tracker.
 - [Screensaver downloads and previews](https://bloxwap.github.io/screensaver/): Live Bitcoin, Solana, Ethereum, and Hyperliquid screensavers for Mac, Windows, and Linux, with previews that run in the browser.
+- [Screensaver documentation](https://bloxwap.github.io/screensaver/docs/): Installation, settings, data and display, and troubleshooting.
 - [Screensaver source code](https://github.com/bloxwap/screensaver): Desktop app, website, build workflows, and issue tracker.
 
 ## Company
