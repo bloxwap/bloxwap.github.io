@@ -6,9 +6,9 @@
 //   npm run sync:hig -- --check # verify inputs, then fail if a generated output differs
 //
 // Inputs are verified before anything is read:
-//   - the lockfile pins @bloxwap/hig-tokens to the reviewed npm URL and integrity,
+//   - package-lock.json pins @bloxwap/hig to the reviewed npm URL and integrity,
 //   - @bloxwap/font remains pinned to 0.1.2,
-//   - the installed packages report the pinned versions (npm ci checks their integrity).
+//   - the installed packages report the pinned versions (CI's bun install --frozen-lockfile checks bun.lock).
 // Outputs are byte-for-byte package files, except assets/font/bloxwap-font.css, which keeps the
 // package's own @font-face rules for the two faces the site uses and only rewrites their URLs.
 import {createHash} from 'node:crypto';
@@ -26,24 +26,33 @@ const fail = message => { console.error(`sync-hig: ${message}`); process.exit(1)
 const release = JSON.parse(read('docs/hig-release.json'));
 const manifestPackage = JSON.parse(read('package.json'));
 const lock = JSON.parse(read('package-lock.json')).packages;
-const tokensLock = lock['node_modules/@bloxwap/hig-tokens'];
-if (manifestPackage.devDependencies['@bloxwap/hig-tokens'] !== release.version) fail('@bloxwap/hig-tokens must use the exact reviewed registry version');
-if (tokensLock?.version !== release.version || tokensLock.resolved !== `https://registry.npmjs.org/@bloxwap/hig-tokens/-/hig-tokens-${release.version}.tgz` || tokensLock.resolved !== release.resolved) fail('package-lock.json must resolve @bloxwap/hig-tokens to the reviewed npm release');
-if (tokensLock.integrity !== release.integrity) fail('package-lock.json integrity for @bloxwap/hig-tokens differs from the reviewed registry release');
+const HIG_PACKAGE = '@bloxwap/hig';
+const splitPackages = Object.keys({...manifestPackage.dependencies, ...manifestPackage.devDependencies}).filter(name => name.startsWith('@bloxwap/hig-'));
+if (splitPackages.length) fail(`unpublished HIG 0.1 packages are still dependencies: ${splitPackages.join(', ')}`);
+const tokensLock = lock[`node_modules/${HIG_PACKAGE}`];
+if (manifestPackage.devDependencies[HIG_PACKAGE] !== release.version) fail(`${HIG_PACKAGE} must use the exact reviewed registry version`);
+if (tokensLock?.version !== release.version || tokensLock.resolved !== `https://registry.npmjs.org/@bloxwap/hig/-/hig-${release.version}.tgz` || tokensLock.resolved !== release.resolved) fail('package-lock.json must resolve @bloxwap/hig to the reviewed npm release');
+if (tokensLock.integrity !== release.integrity) fail('package-lock.json integrity for @bloxwap/hig differs from the reviewed registry release');
 const FONT_VERSION = '0.1.2';
 const fontLock = lock['node_modules/@bloxwap/font'];
 if (fontLock?.version !== FONT_VERSION || fontLock.resolved !== `https://registry.npmjs.org/@bloxwap/font/-/font-${FONT_VERSION}.tgz` || !fontLock.integrity) fail(`package-lock.json must pin @bloxwap/font ${FONT_VERSION} from the npm registry`);
 
 // 2. Installed packages.
 const pkg = name => join(root, 'node_modules', name);
-for (const [name, version] of [['@bloxwap/hig-tokens', release.version], ['@bloxwap/font', FONT_VERSION]]) {
-  if (!existsSync(join(pkg(name), 'package.json'))) fail(`${name} is not installed; run npm ci`);
+for (const [name, version] of [[HIG_PACKAGE, release.version], ['@bloxwap/font', FONT_VERSION]]) {
+  if (!existsSync(join(pkg(name), 'package.json'))) fail(`${name} is not installed; run bun install --frozen-lockfile`);
   const installed = JSON.parse(readFileSync(join(pkg(name), 'package.json'))).version;
-  if (installed !== version) fail(`${name} ${installed} is installed; expected ${version}. Run npm ci`);
+  if (installed !== version) fail(`${name} ${installed} is installed; expected ${version}. Run bun install --frozen-lockfile`);
 }
 
-// 3. Outputs.
-const tokens = pkg('@bloxwap/hig-tokens'), font = pkg('@bloxwap/font');
+// 3. Outputs. Token CSS and the approved mark are the public @bloxwap/hig/tokens entries.
+const hig = pkg(HIG_PACKAGE), font = pkg('@bloxwap/font');
+const higExports = JSON.parse(readFileSync(join(hig, 'package.json'), 'utf8')).exports ?? {};
+const higEntry = spec => {
+  const target = higExports[spec];
+  if (typeof target !== 'string' || !target.startsWith('./')) fail(`${HIG_PACKAGE} does not export ${spec}`);
+  return join(hig, target);
+};
 const FACES = [
   ['Bloxwap Sans', 'fonts/BloxwapSans/BloxwapSans-Variable.woff2'],
   ['Bloxwap Mono', 'fonts/BloxwapMono/BloxwapMono-Variable.woff2'],
@@ -56,8 +65,8 @@ const faceRules = FACES.map(([family, file]) => {
 });
 
 const outputs = new Map([
-  ['assets/hig/tokens.css', readFileSync(join(tokens, 'dist/tokens.css'))],
-  ['icon.svg', readFileSync(join(tokens, 'assets/bloxwap-icon.svg'))],
+  ['assets/hig/tokens.css', readFileSync(higEntry('./tokens/css'))],
+  ['icon.svg', readFileSync(higEntry('./tokens/mark.svg'))],
   ...FACES.map(([, file]) => [`assets/font/${file.split('/').pop()}`, readFileSync(join(font, file))]),
   ['assets/font/bloxwap-font.css', Buffer.from(
     `/* Generated by scripts/sync-hig.mjs from @bloxwap/font ${FONT_VERSION} bloxwap-font.css (SIL Open Font License 1.1).\n` +
@@ -66,7 +75,7 @@ const outputs = new Map([
 ]);
 const manifest = {
   generatedBy: 'scripts/sync-hig.mjs',
-  hig: {commit: release.commit, version: release.version, resolved: tokensLock.resolved, integrity: tokensLock.integrity},
+  hig: {package: HIG_PACKAGE, commit: release.commit, version: release.version, resolved: tokensLock.resolved, integrity: tokensLock.integrity},
   font: {package: '@bloxwap/font', version: FONT_VERSION, integrity: fontLock.integrity},
   files: Object.fromEntries([...outputs].map(([path, bytes]) => [path, {sha256: sha('sha256', bytes), bytes: bytes.length}])),
 };
@@ -80,4 +89,4 @@ for (const [path, bytes] of outputs) {
   writeFileSync(target, bytes);
 }
 if (stale.length) fail(`generated files differ from the pinned packages (run npm run sync:hig):\n  ${stale.join('\n  ')}`);
-console.log(`sync-hig: ${check ? 'verified' : 'wrote'} ${outputs.size} files from @bloxwap/hig-tokens ${release.version} and @bloxwap/font ${FONT_VERSION}`);
+console.log(`sync-hig: ${check ? 'verified' : 'wrote'} ${outputs.size} files from @bloxwap/hig/tokens ${release.version} and @bloxwap/font ${FONT_VERSION}`);

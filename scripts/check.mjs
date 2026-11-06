@@ -1,6 +1,6 @@
 // Static checks for the HIG adoption (bloxwap/hig#61). Node built-ins only.
 //   - styles.css takes every colour, type, space, radius and motion value from a --hig-* role
-//     defined in the generated @bloxwap/hig-tokens CSS, and defines no custom properties of its own.
+//     defined in the generated @bloxwap/hig/tokens CSS, and defines no custom properties of its own.
 //   - every page loads the font, token and site stylesheets in that order, uses the approved mark
 //     and lockup, has a complete OG card, and links only to files that exist (or to the SDK sites).
 //   - the brand lockup is the supplied artwork, byte for byte.
@@ -24,8 +24,8 @@ const css = readFileSync(stylesheet, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
 
 if (/#[0-9a-f]{3,8}\b/i.test(css)) error('styles.css: hex colour literal');
 if (/\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color)\(/i.test(css)) error('styles.css: colour function literal');
-for (const [, name] of css.matchAll(/(--[\w-]+)\s*:/g)) error(`styles.css: defines ${name}; roles come from @bloxwap/hig-tokens/css`);
-for (const [, name] of css.matchAll(/var\(\s*(--[\w-]+)/g)) if (!roles.has(name)) error(`styles.css: ${name} is not a role in @bloxwap/hig-tokens/css`);
+for (const [, name] of css.matchAll(/(--[\w-]+)\s*:/g)) error(`styles.css: defines ${name}; roles come from @bloxwap/hig/tokens/css`);
+for (const [, name] of css.matchAll(/var\(\s*(--[\w-]+)/g)) if (!roles.has(name)) error(`styles.css: ${name} is not a role in @bloxwap/hig/tokens/css`);
 
 const LITERAL = /(?<![\w-])-?\d*\.?\d+(?:px|rem|em|ch|pt|ms|s|%)?(?![\w-])/; // a bare number or length
 const role = value => value.replace(/var\(--hig-[\w-]+\)/g, '');
@@ -105,7 +105,7 @@ for (const [page, required] of [['index.html', PROJECT_SITES], ['developers/inde
 // ---- brand and OG assets --------------------------------------------------------------------
 // Supplied lockup artwork, verbatim from bloxwap/font apps/docs/public/logos/bloxwap-lockup.svg at
 // 40f2d08998e61362ed7f5198f6d51b5f3987e572 (the Font docs source HIG copies its approved mark from).
-// HIG ships only the mark (@bloxwap/hig-tokens/mark.svg, copied to /icon.svg by sync-hig).
+// HIG ships only the mark (@bloxwap/hig/tokens/mark.svg, copied to /icon.svg by sync-hig).
 const LOCKUP_SHA256 = '7073de7703f5d5e02cd9903927d855733419ec5f661493e1d6f59a043c3890c3';
 if (createHash('sha256').update(readFileSync(join(root, 'lockup.svg'))).digest('hex') !== LOCKUP_SHA256) error('lockup.svg differs from the supplied Bloxwap lockup');
 const png = readFileSync(join(root, 'og/home.png'));
