@@ -19,12 +19,12 @@ The pages follow the [Bloxwap HIG](https://github.com/bloxwap/hig) plain-CSS pat
 
 - `styles.css` uses only `--hig-*` roles (colour, type, space, radius, motion, density). It defines no values of its own; `npm run check` fails on literal colours (hex, colour functions, and named colours anywhere in a value, shorthands included, outside `var(--hig-*)`), type, spacing, radius, durations or `px` heights. `scripts/check.test.mjs` (`npm run test:check`, also part of `npm run check`) plants literals to prove each rule fails.
 - The nav and footer lockups are sized in `rem`, so they scale with root text; `npm run test:e2e` checks they double at 200% text.
-- `assets/hig/tokens.css` is `@bloxwap/hig-tokens/css`, and `icon.svg` is the approved mark `@bloxwap/hig-tokens/mark.svg`, both generated from the exact npm `@bloxwap/hig-tokens@0.1.0` release. [`docs/hig-release.json`](docs/hig-release.json) and the lockfile pin its registry URL and integrity hash.
+- `assets/hig/tokens.css` is `@bloxwap/hig/tokens/css`, and `icon.svg` is the approved mark `@bloxwap/hig/tokens/mark.svg`, both generated from the exact npm `@bloxwap/hig@0.2.0` release. [`docs/hig-release.json`](docs/hig-release.json) and `package-lock.json` pin its registry URL and integrity hash. CI installs that same release from `bun.lock`. Both lockfiles also pin `@bloxwap/chart` 0.3.0, the one required peer of `@bloxwap/hig`. This site does not import it.
 - `assets/font/` holds the Latin Bloxwap Sans and Mono faces from `@bloxwap/font` 0.1.2 (pinned in `package-lock.json`) and their `@font-face` rules.
 - `lockup.svg` is the supplied Bloxwap lockup, verbatim from bloxwap/font `apps/docs/public/logos/bloxwap-lockup.svg`; `npm run check` verifies its hash.
 - `og/home.png` is rendered from `scripts/og-card.html` with `npm run og`.
 
-Never edit `assets/hig/`, `assets/font/`, `assets/provenance.json` or `icon.svg` by hand. `npm run build` (also available as `npm run sync:hig`) generates these ignored outputs from the locked packages. CI checks their bytes, tests the resulting site and uploads that same directory for Pages deployment. The generated assets and vendored candidate tarballs are no longer committed; all three copied-asset drift exceptions are retired (#25). HIG 0.1.0 used token publishing and has no npm provenance attestation.
+Never edit `assets/hig/`, `assets/font/`, `assets/provenance.json` or `icon.svg` by hand. `npm run build` (also available as `npm run sync:hig`) generates these ignored outputs from the locked packages. CI checks their bytes, tests the resulting site and uploads that same directory for Pages deployment. The generated assets and vendored candidate tarballs are no longer committed; all three copied-asset drift exceptions are retired (#25). HIG 0.2.0 is one package; the unpublished `@bloxwap/hig-*` 0.1 packages 404 on npm. The 0.2.0 registry release has no GitHub `v0.2.0` tag and no npm provenance attestation. Its token CSS and mark match the source commit in `docs/hig-release.json`.
 
 ## Develop
 
@@ -42,10 +42,10 @@ CI (`site` in `.github/workflows/ci.yml`) runs on self-hosted Apple Silicon Mac 
 
 ## Upgrading HIG
 
-1. Update the exact `@bloxwap/hig-tokens` version in `package.json` and run `npm install`.
-2. Update `docs/hig-release.json` with the reviewed release source commit, registry URL and integrity from the lockfile. Check out that commit in `.hig` if a local drift checkout already exists.
+1. Update the exact `@bloxwap/hig` version in `package.json`. Refresh both lockfiles (`bun install` for `bun.lock`, `npm install` for `package-lock.json`) without changing other dependencies. CI installs from `bun.lock`; `scripts/sync-hig.mjs` checks `package-lock.json`.
+2. Update `docs/hig-release.json` with the reviewed source commit, registry URL and integrity from the lockfile. Check out that commit in `.hig` if a local drift checkout already exists. If the npm release has no GitHub tag, pin the commit whose `@bloxwap/hig/tokens/css` and mark match the tarball.
 3. Run `npm run build`, `npm run check`, `npm run drift` and `npm run test:e2e`, and update the bloxwap.github.io row in bloxwap/hig `planning/adoption.json`.
 
-Validation for the registry and generated-asset migration is in [docs/hig-registry-verification.json](docs/hig-registry-verification.json). Fonts and marks retain the exact prior bytes; homepage and developer-page screenshots at 1440px and 390px are byte-identical.
+The earlier registry migration onto `@bloxwap/hig-tokens@0.1.0` is recorded in [docs/hig-registry-verification.json](docs/hig-registry-verification.json). Fonts and the approved mark kept the same bytes through that migration; homepage and developer-page screenshots at 1440px and 390px were byte-identical.
 
 Rollback: revert the adopting PR.

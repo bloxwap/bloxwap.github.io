@@ -1,5 +1,5 @@
 /* Shared styles for bloxwap.github.io. Every colour, type, space, radius and motion value is a
- * Bloxwap HIG role from /assets/hig/tokens.css (@bloxwap/hig-tokens, copied by scripts/sync-hig.mjs);
+ * Bloxwap HIG role from /assets/hig/tokens.css (@bloxwap/hig/tokens/css, copied by scripts/sync-hig.mjs);
  * faces come from /assets/font/bloxwap-font.css (@bloxwap/font). Load both before this file.
  * Never add literal palette values or redefine --hig-* roles here: scripts/check.mjs fails. */
 * { box-sizing: border-box; }
