@@ -10,7 +10,7 @@ Jobs stay queued until a runner with all three labels is online. Workflows do no
 
 ## Caching
 
-Use Bun's local on-disk package cache; do not enable remote Actions caches. CI installs from `bun.lock` with `bun install --frozen-lockfile`. Keep `package-lock.json` as well: `scripts/sync-hig.mjs` reads it to verify the reviewed registry releases. Dependency updates must keep both lockfiles in sync.
+Use Bun's local on-disk package cache; do not enable remote Actions caches. CI installs from `bun.lock` with `bun install --frozen-lockfile`. `scripts/sync-hig.mjs` reads `bun.lock` to verify the reviewed registry releases.
 
 ## Pages deployment
 
