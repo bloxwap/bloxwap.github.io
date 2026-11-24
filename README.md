@@ -29,7 +29,7 @@ Never edit `assets/hig/`, `assets/font/`, `assets/provenance.json` or `icon.svg`
 ## Develop
 
 ```sh
-npm ci
+bun install --frozen-lockfile
 npm run build        # generate CSS, fonts, approved mark and asset hashes
 npm run dev          # http://localhost:3900
 npm run check        # literal/role, page, brand and OG checks plus planted-literal tests; verifies the generated assets

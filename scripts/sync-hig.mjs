@@ -6,7 +6,7 @@
 //   npm run sync:hig -- --check # verify inputs, then fail if a generated output differs
 //
 // Inputs are verified before anything is read:
-//   - package-lock.json pins @bloxwap/hig to the reviewed npm URL and integrity,
+//   - bun.lock pins @bloxwap/hig to the reviewed npm URL and integrity,
 //   - @bloxwap/font remains pinned to 0.1.2,
 //   - the installed packages report the pinned versions (CI's bun install --frozen-lockfile checks bun.lock).
 // Outputs are byte-for-byte package files, except assets/font/bloxwap-font.css, which keeps the
@@ -21,21 +21,38 @@ const check = process.argv.includes('--check');
 const read = path => readFileSync(join(root, path));
 const sha = (algorithm, bytes, encoding = 'hex') => createHash(algorithm).update(bytes).digest(encoding);
 const fail = message => { console.error(`sync-hig: ${message}`); process.exit(1); };
+const parseBunLock = text => new Function(`return (${text})`)();
+const bunPackage = (lock, name) => {
+  const entry = lock.packages?.[name];
+  if (!entry) return undefined;
+  const id = entry[0];
+  const at = id.lastIndexOf('@');
+  const version = id.slice(at + 1);
+  let resolved = entry[1] || '';
+  if (!resolved) {
+    const pkgName = id.slice(0, at);
+    const tarball = pkgName.includes('/') ? pkgName.split('/')[1] : pkgName;
+    resolved = `https://registry.npmjs.org/${pkgName}/-/${tarball}-${version}.tgz`;
+  }
+  const integrity = [...entry].reverse().find((value) => typeof value === 'string' && value.startsWith('sha')) ?? '';
+  return { version, resolved, integrity };
+};
+
 
 // 1. Reviewed registry release and matching dependency/lockfile pins.
 const release = JSON.parse(read('docs/hig-release.json'));
 const manifestPackage = JSON.parse(read('package.json'));
-const lock = JSON.parse(read('package-lock.json')).packages;
+const bunLock = parseBunLock(read('bun.lock'));
 const HIG_PACKAGE = '@bloxwap/hig';
 const splitPackages = Object.keys({...manifestPackage.dependencies, ...manifestPackage.devDependencies}).filter(name => name.startsWith('@bloxwap/hig-'));
 if (splitPackages.length) fail(`unpublished HIG 0.1 packages are still dependencies: ${splitPackages.join(', ')}`);
-const tokensLock = lock[`node_modules/${HIG_PACKAGE}`];
+const tokensLock = bunPackage(bunLock, HIG_PACKAGE);
 if (manifestPackage.devDependencies[HIG_PACKAGE] !== release.version) fail(`${HIG_PACKAGE} must use the exact reviewed registry version`);
-if (tokensLock?.version !== release.version || tokensLock.resolved !== `https://registry.npmjs.org/@bloxwap/hig/-/hig-${release.version}.tgz` || tokensLock.resolved !== release.resolved) fail('package-lock.json must resolve @bloxwap/hig to the reviewed npm release');
-if (tokensLock.integrity !== release.integrity) fail('package-lock.json integrity for @bloxwap/hig differs from the reviewed registry release');
+if (tokensLock?.version !== release.version || tokensLock.resolved !== `https://registry.npmjs.org/@bloxwap/hig/-/hig-${release.version}.tgz` || tokensLock.resolved !== release.resolved) fail('bun.lock must resolve @bloxwap/hig to the reviewed npm release');
+if (tokensLock.integrity !== release.integrity) fail('bun.lock integrity for @bloxwap/hig differs from the reviewed registry release');
 const FONT_VERSION = '0.1.2';
-const fontLock = lock['node_modules/@bloxwap/font'];
-if (fontLock?.version !== FONT_VERSION || fontLock.resolved !== `https://registry.npmjs.org/@bloxwap/font/-/font-${FONT_VERSION}.tgz` || !fontLock.integrity) fail(`package-lock.json must pin @bloxwap/font ${FONT_VERSION} from the npm registry`);
+const fontLock = bunPackage(bunLock, '@bloxwap/font');
+if (fontLock?.version !== FONT_VERSION || fontLock.resolved !== `https://registry.npmjs.org/@bloxwap/font/-/font-${FONT_VERSION}.tgz` || !fontLock.integrity) fail(`bun.lock must pin @bloxwap/font ${FONT_VERSION} from the npm registry`);
 
 // 2. Installed packages.
 const pkg = name => join(root, 'node_modules', name);
